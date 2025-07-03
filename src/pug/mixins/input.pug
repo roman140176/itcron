@@ -1,0 +1,7 @@
+mixin input(type, name, value, attrs, labelText, id)
+  -
+    const inputId = id || `input-${name}`
+  .form-group
+    if labelText
+      label(for=inputId)= labelText
+    input(type=type name=name id=inputId value=value)&attributes(attrs)

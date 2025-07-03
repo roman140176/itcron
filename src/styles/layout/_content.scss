@@ -1,0 +1,394 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
+html,body{
+  height: 100%;
+  width: 100%;
+  font-family: $Geometria;
+  font-size: 24px;
+  line-height: 120%;
+  background-color:$bodyBgColor;
+  color: $primaryColor;
+}
+
+.wrapper {
+  max-width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  .content {
+    display: flex;
+    flex-flow: column;
+    flex: 1 0 auto;
+  }
+
+  .footer {}
+}
+
+.hero{
+  padding: 80px 100px 0 100px;
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column;
+  height: 100svh;
+  @include respond-max(767px) {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  &__burger{
+    display: none;
+    @include respond-max(767px){
+      position: relative;
+      display: block;
+      width: 80px;
+      height: 60px;
+      z-index: 1001;
+      span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 8px;
+        transform: scaleY(0.5);
+        background-color: $primaryColor;
+        transform: translate(-50%,-50%);
+        @include respond-max(480px){
+          height: 16px;
+        }
+        &::before,&::after{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $primaryColor;
+          transition: all 0.2s ease;
+        }
+        
+        &::before{
+          transform: translateY(-20px);
+          @include respond-max(480px){
+         transform: translateY(-40px);
+          }
+        }
+        &::after{
+          transform: translateY(20px);
+          @include respond-max(480px){
+          transform: translateY(40px);
+          }
+        }
+      }
+      @include respond-max(480px) {
+        width: 130px;
+        height: 130px;
+      }
+    }
+    &.active{
+      span{
+        background-color: transparent;
+        &::after{
+          top: 0;
+          transform: rotate(135deg) translateY(0);
+        }
+        &::before{
+          top: 0;
+          transform: rotate(-135deg) translateY(0);
+        }
+      }
+    }
+  }
+  &__rect{
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 323px;
+    left: 133px;
+    background-image: url("../../assets/images/rect.svg");
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+    &--bottom{
+      width: 88px;
+      height: 88px;
+      left: 50%;
+      transform: translateX(-50%);
+      top:auto;
+      bottom: 114px;
+      background-image: url("../../assets/images/rect-bottom.svg");
+      @include respond-max(480px) {
+          top: auto!important;
+          bottom: 300px;
+        }
+    }
+    &--right{
+      width: 33px;
+      height: 33px;
+      left: auto;
+      right: 347px;
+      top:392px;
+      bottom: 114px;
+      background-image: url("../../assets/images/rect-right.svg");
+      @include respond-max(480px) {
+         top: 600px;
+        }
+    }
+    @include respond-max(767px){
+      width: 100px;
+      height: 100px;
+      top: 300px;
+    }
+  }
+  &__top{
+    &-pattern{
+      width: 196px;
+      height: 42px;
+      position: absolute;
+      top: 73px;
+      left: 0;  
+      background-image: url("../../assets/images/pattern-top.svg");
+      background-size: 100% 100%;
+      pointer-events: none;
+      @include respond-max(767px) {
+        display: none;
+      }
+    }
+  }
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 435px;
+    height: 435px;
+    background-image: url("../../assets/images/top-corner.svg");
+    background-size: 100% 100%;
+    pointer-events: none;
+    @include respond-max(767px){
+      width: 600px;
+      height: 600px;
+    }
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 584px;
+    height: 337px;
+    background-image: url("../../assets/images/bottom-corner.svg");
+    background-size: 100% 100%;
+    pointer-events: none;
+    @include respond-max(767px) {
+        width: 854px;
+        height: 493px;
+      }
+  }
+  &__header{      
+    padding-left: 180px;
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    @include respond-max(767px){
+      padding-left: 0;
+    }
+  }
+  &__dots{
+    display: flex;
+    align-items: center;  
+    gap: 10px;
+    transition: transform 2s ease;
+    &:hover{
+      transform: rotate(360deg);
+    }
+    span{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $primaryColor;
+      cursor: pointer;
+    }
+    @include respond-max(767px){
+      display: none;
+    }
+  }
+  &__menu{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    text-transform: uppercase;
+    @include respond-max(767px){
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background-color: $bodyBgColor;
+      flex-flow: column;
+      padding-top: 15vh;
+      gap: 160px;
+      transform: translateX(-100%);
+      transition: transform 0.2s ease;
+      &.active{
+        transition: transform 0.3s ease;
+        transform: translateX(0);
+      }
+    }
+    &-link{
+      color: $primaryColor;
+      transition: color 0.2s ease;
+      @include respond-max(1366px){
+        font-size: 34px;
+      }
+      @include respond-max(767px){
+        font-size: 80px;
+      }
+    }
+    &-item{
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $orange;
+        transform: translateX(-50%) scaleY(0.5);
+        transform-origin: 0 0;
+        transition: width 0.2s ease;
+      }
+      &:hover{
+        &::after{
+          width: 100%;
+        }
+        a{
+          color: $orange;
+        }
+      }
+    }
+  }
+  &__info{
+    margin-bottom: 60px;
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    @include respond-max(1023px){
+      flex: 1 0 auto;
+      margin-top: 30vh;
+    }
+    &-box{
+      display: flex;
+      flex-flow: column;      
+    }
+    *{
+      position: relative; 
+      z-index: 1;
+    }
+    &-text{
+      position: relative;
+      padding-right: 114px;
+      &-after{
+        position: absolute;
+        width: 750px;
+        height: 750px;
+        background: url("../../assets/images/circle.svg") no-repeat 0 0;
+        background-size: 100% 100%;
+        top: -295px;
+        left: -605px;
+        z-index: 0;
+        @include respond-max(1366px) {
+            width: 850px;
+            height: 850px;
+            top: -355px;
+            left: -660px
+          }
+        @include respond-max(767px) {
+            width: 1000px;
+            height: 1000px;
+            top: -355px;
+            left: -800px;
+          }
+      }
+    }
+  }
+  &__socials{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    @include respond-max(1023px){
+      margin-top: auto;
+    }
+    &-pattern{
+      margin-bottom: 46px;
+      width: 354px;
+      height: 99px;
+      background: url("../../assets/images/pattern.svg") no-repeat 0 0;
+      background-size: 100% 100%;      
+      @include respond-max(767px){
+       width: 600px;
+       height: 200px;
+       background-size: 100% 100%;
+      }
+    }
+    &-links{
+      display: flex;
+      gap: 32px;
+      @include respond-max(767px) {
+          gap: 64px; 
+        }
+    }
+    &-link{
+      i{
+        color: $primaryColor;
+        display: flex;
+        font-size: 72px;
+        transition: color 0.2s ease;
+        @include respond-max(767px){
+          font-size: 130px;
+        }
+      }
+      &:hover{
+        i{
+          color: $orange;
+        }
+      }
+    }
+  }
+  &__title{
+    font-size: clamp(150px, 15vw, 200px);
+    font-family: $GothamPro;    
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 4px;
+    @include respond-max(1366px){
+      font-size: 250px;
+    }
+    @include respond-max(767px){
+      font-size: 350px;
+    }
+  }
+  &__desc{
+    padding-left: 12px;
+    margin: 0;
+    font-size: 48px;
+    font-weight: 500;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: 0.96px;
+    @include respond-max(1366px) {
+        font-size: 58px;
+      }
+    @include respond-max(767px) {
+        font-size: 78px;
+      }
+  }
+}

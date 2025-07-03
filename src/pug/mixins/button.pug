@@ -1,0 +1,6 @@
+mixin button(className, text, attr, tag,anim)
+  -
+    const t = tag || 'button';    
+  //- Используем динамический тег через Pug-конструкцию
+  #{t}(class=`btn btn-${className}${anim ? ' '+ anim : ''}`)&attributes(attr)
+    span= text

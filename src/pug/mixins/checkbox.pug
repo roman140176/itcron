@@ -1,0 +1,5 @@
+mixin checkbox(type,name,id,text,className)
+  label(for=id,class=`${className}-label`)
+    input(id=id, type=type, name=name class="hidden")
+    mark(class=`input-${className}`)
+    span= text

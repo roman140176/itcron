@@ -1,0 +1,52 @@
+@use "sass:map";
+@use './variables' as *;
+
+
+
+@mixin respond-max($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin respond-min($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  $value: map.get($breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map.";
+  }
+}
+@mixin respond-max-to($breakpoint) {
+  $value: map.get($breakpoints, $breakpoint);
+
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in \$breakpoints map.";
+  }
+}
+
+// brakpoints
+$breakpoints: (
+  "sm": 480px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 2080px,
+) !default;

@@ -1,0 +1,17 @@
+include ../mixins/menu.pug
+include ../mixins/iconFont.pug
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title IT-CRON
+    link(rel="stylesheet" href="/styles/main.scss")
+  body
+    #preloader
+      .spinner
+    .wrapper
+      main.content 
+        block content
+    script(type="module" src="/scripts/main.js")
