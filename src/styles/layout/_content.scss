@@ -121,6 +121,10 @@ html,body{
       top:auto;
       bottom: 114px;
       background-image: url("../../assets/images/rect-bottom.svg");
+      @include respond-max(767px){
+        top: auto!important;
+          bottom: 200px;
+      }
       @include respond-max(480px) {
           top: auto!important;
           bottom: 300px;
