@@ -177,6 +177,10 @@ html,body{
       width: 600px;
       height: 600px;
     }
+        @media (max-height:669px){
+          width: 300px;
+          height: 300px;
+        }
   }
   &::before{
     content: '';
@@ -192,12 +196,18 @@ html,body{
         width: 854px;
         height: 493px;
       }
+      @media (max-height:669px){
+        width: 384px;
+        height: 137px;
+      }
   }
   &__header{      
+    position: relative;
     padding-left: 180px;
     display: flex;
     align-items: center;    
     justify-content: space-between;
+    z-index: 2;
     @include respond-max(767px){
       padding-left: 0;
     }
@@ -319,6 +329,12 @@ html,body{
             top: -355px;
             left: -800px;
           }
+        @media (max-height:669px) {
+          width: 500px;
+          height: 500px;
+          top: -250px;
+          left: -400px;
+        }
       }
     }
   }
