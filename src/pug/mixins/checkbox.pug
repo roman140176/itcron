@@ -1,5 +1,12 @@
-mixin checkbox(type,name,id,text,className)
-  label(for=id,class=`${className}-label`)
-    input(id=id, type=type, name=name class="hidden")
-    mark(class=`input-${className}`)
+mixin checkbox(type, name, id, text, className, checked)
+  label(for=id, class=`form-group__label ${className}-label`)
+    input(
+      id=id, 
+      type=type, 
+      name=name, 
+      class="hidden", 
+      checked=checked
+    )
+    mark(class=`form-group__mark ${className}-mark`)
     span= text
+

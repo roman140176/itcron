@@ -1,17 +1,23 @@
-include ../mixins/menu.pug
+include ../mixins/icon.pug
 include ../mixins/iconFont.pug
+include ../mixins/menu.pug
+include ../mixins/input.pug
+include ../mixins/checkbox.pug
 
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title IT-CRON
+    title Rocont
     link(rel="stylesheet" href="/styles/main.scss")
+    script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer)
   body
     #preloader
       .spinner
+        img(src="assets/images/preloader.svg", alt="")
     .wrapper
       main.content 
-        block content
+        .container
+          block content
     script(type="module" src="/scripts/main.js")

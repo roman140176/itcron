@@ -3,42 +3,127 @@ import 'virtual:svg-icons-register'
 if (import.meta.hot) {
   import.meta.hot.accept()
 }
+import IMask from 'imask';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
-const burger = document.querySelector('.hero__burger');
-const menu = document.querySelector('.hero__menu');
-if(burger && menu){
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    menu.classList.toggle('active');
+const swiper = new Swiper('.preview__slider', {
+  // Optional parameters
+  loop: false,
+  slidesPerView:3,
+  navigation: {
+    nextEl: '.preview__slider-next',
+    prevEl: '.preview__slider-prev',
+  },  
+  breakpoints:{
+    0: {
+      slidesPerView: 1.2,
+    },
+    479: {
+      slidesPerView: 1.2,
+    },
+    480: {
+      slidesPerView: 1.9,
+    },
+    639: {
+      slidesPerView: 1.9,
+    },
+    640: {
+      slidesPerView: 2.8,
+    },
+    959: {
+      slidesPerView: 2.8,
+    },
+    960: {
+      slidesPerView: 2.8,
+    },
+    1199: {
+      slidesPerView: 2.8,
+    },
+    1200: {
+      slidesPerView: 3.2,
+    },
+   },
+  on: {
+    init() {
+      updateSlidesOpacity(this);
+    },
+    slideChangeTransitionStart() {
+      updateSlidesOpacity(this);
+    }
+  }
+
+});
+function updateSlidesOpacity(sl) {
+  const slides = sl.slides;
+  const activeIndex = sl.activeIndex;
+
+  slides.forEach((slide, index) => {
+    if (index < activeIndex) {
+      slide.classList.add('is-hidden');
+    } else {
+      slide.classList.remove('is-hidden');
+    }
   });
 }
 
-const shapes = document.querySelectorAll('.shape');
 
-const floatingShapes = [];
+const phoneInput = document.getElementById('phone');
 
-shapes.forEach((shape, i) => {
-  floatingShapes.push({
-    el: shape,
-    amplitudeX: 20 + Math.random() * 30, // размер колебания
-    amplitudeY: 20 + Math.random() * 30,
-    speedX: 0.1 + Math.random() * 0.3,   // МЕДЛЕННО
-    speedY: 0.1 + Math.random() * 0.3,
-    phase: Math.random() * Math.PI * 2
-  });
+const maskOptions = {
+  mask: '+{7} (000) 000-00-00'
+};
+
+const mask = IMask(phoneInput, maskOptions);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if(ymaps){
+    ymaps.ready(init);
+
+  }
 });
 
-function animate() {
-  const time = Date.now() * 0.001; // время в секундах
+  function init() {
+    const myMap = new ymaps.Map("map", {
+      center: [55.783480, 37.596317],
+      zoom: 15,
+      controls: ['zoomControl'] // добавь только нужные
+    }, {
+      suppressMapOpenBlock: true // убрать баннер "Открыть в Яндекс.Картах"
+    });
 
-  floatingShapes.forEach(shape => {
-    const x = Math.sin(time * shape.speedX + shape.phase) * shape.amplitudeX;
-    const y = Math.cos(time * shape.speedY + shape.phase) * shape.amplitudeY;
+    // Один кастомный маркер
+    const myPlacemark = new ymaps.Placemark([55.783480, 37.596317], {
+      balloonContent: 'Rocont'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: '/assets/images/pin.svg',
+      iconImageSize: [40, 40],
+      iconImageOffset: [-20, -40]
+    });
 
-    shape.el.style.transform = `translate(${x}px, ${y}px)`;
+    myMap.geoObjects.add(myPlacemark);
+
+    // Ограничь поведение, если нужно
+    myMap.behaviors.disable('scrollZoom'); // запрет колесика
+  }
+
+  document.addEventListener('click', (event) => {
+    if (event.target.closest('.header__burger')) {
+      document.querySelector('.header__menu').classList.toggle('active');
+      document.querySelector('.header__burger').classList.toggle('active');
+    }    
   });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+  
+    // Добавляем класс для плавного исчезновения
+    preloader.classList.add('hide');
+  
+    // Ждём, пока завершится CSS-анимация, затем удаляем элемент
+    setTimeout(() => {
+      if (preloader && preloader.parentNode) {
+        preloader.parentNode.removeChild(preloader);
+      }
+    }, 400); // чуть больше времени, чем transition в SCSS
+  });

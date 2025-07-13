@@ -1,0 +1,178 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+.preview{
+  display: flex;
+  gap: 8px;  
+  @include respond-max($md) {
+      gap: 0.833vw;
+    }
+  @include respond-max($sm){
+    flex-flow: column;
+    gap: 1.250vw;
+  }
+  @include respond-max($xs){
+    gap: 1.667vw;
+  }
+  @include respond-max($xxs) {
+    gap: 2.500vw;
+  }
+  &__header{
+    padding-top: 16px;
+    position: relative;
+    z-index: 2;
+    width: 236px;
+    flex-shrink: 0;
+    display: flex;
+    flex-flow: column;
+    @include respond-max($sm) {
+        padding-top: 0;
+        width: 100%;
+      }
+  }
+    &__slider{
+      width: calc(100% - 236px);
+      overflow: visible!important;
+      @include respond-max($sm) {
+          width: 100%;
+        }
+      &-nav{
+        display: flex;
+        gap: 16px;
+        margin-top: auto;
+        @include respond-max($sm) {
+           display: none;
+          }
+      }
+      &-btn{
+        cursor: pointer;
+        border-radius: 50px;
+        font-size: 20px;
+        width: 48px;
+        height: 20px;
+        background:url('/assets/images/arrow.svg') no-repeat 4px center;
+        background-size: 48px 20px;
+        
+        @include respond-min($md){
+          width: 5vw;
+          height: 2.083vw;
+          background-position: 0.417vw center;
+          background-size: 5vw 2.083vw;
+        }
+        &:not(.swiper-button-disabled){
+          background: $accent url('/assets/images/arrow-white.svg') no-repeat 4px center;
+          background-size: 48px 20px;
+          i{
+            color: $light;
+          }
+          @include respond-min($md){
+              width: 5vw;
+              height: 2.083vw;
+              background-position: 0.417vw center;
+              background-size: 5vw 2.083vw;
+          }
+        }
+      }
+      &-next{
+        transform: scale(-1,1);
+      }
+    }
+  &__slide{
+    border-radius: 24px;
+    overflow: hidden;
+    @include respond-min($mdl) {
+        &:hover{
+          .preview__slide-content{
+            opacity: 1;
+          }
+        }
+      }
+    @include respond-max($mdl) {
+      border-radius: 2.500vw;
+    }
+    
+    @include respond-max($sm) {
+      border-radius: 3.750vw;
+    }
+    @include respond-max($xs) {
+      height: 58.333vw!important;
+      border-radius: 5.000vw;
+    }
+    @include respond-max($xxs) {
+      height: 87.500vw!important;
+      border-radius: 7.500vw;
+    }
+    &.is-hidden {
+      opacity: 0;
+      @include respond-max($xs){
+        opacity: 1;
+      }
+      }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    &-content{
+      padding: 32px;
+      position: absolute;
+      inset:0;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-end;
+      color: $light;
+      z-index: 1;
+      transition: opacity 0.3s ease-in-out;
+      @include respond-min($mdl) {
+        opacity: 0;
+      }
+    @include respond-max($xs) {
+      padding: 3.750vw;
+    }
+    @include respond-max($xxs) {
+      padding: 7.500vw;
+    }
+      
+      
+    }
+    &-title{
+      position: relative;
+      top: 15px;
+      font-family: $gropled;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 0;      
+      @include respond-max($md) {
+          font-size: 2.083vw;
+        }
+      @include respond-max($sm) {
+          font-size: 3.125vw;
+        }
+      @include respond-max($xs) {
+          font-size: 4.167vw;
+        }
+      @include respond-max($xs) {
+          font-size: 6.250vw;
+        }
+    }
+    &-text{
+      padding-top: 8px;
+      margin: 0;
+    }
+  }
+  .swiper-wrapper{
+    gap: 8px;
+    @include respond-max($md) {
+        gap: 0.833vw;
+      }
+    @include respond-max($sm){
+      gap: 1.250vw;
+    }
+    @include respond-max($xs){
+      gap: 1.667vw;
+    }
+    @include respond-max($xxs){
+      gap: 2.500vw;
+    }
+  }
+}

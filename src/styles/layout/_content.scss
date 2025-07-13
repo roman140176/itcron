@@ -5,15 +5,68 @@
 html,body{
   height: 100%;
   width: 100%;
-  font-family: $Geometria;
-  font-size: 24px;
-  line-height: 120%;
-  background-color:$bodyBgColor;
-  color: $primaryColor;
+  font-family: $tildaSans;
+  font-size: 16px;
+  line-height: 150%;
+  color: $dark;
+  @include respond-max($md){
+    font-size: 1.667vw;
+  }
+  @include respond-max($sm){
+    font-size: 2.500vw;
+  }
+  @include respond-max($xs){
+    font-size: 3.333vw;
+  }
+  @include respond-max($xxs){
+    font-size: 5.000vw;
+  }
+ 
 }
-
+body{
+  background: $bodyColor url('/assets/images/bg.svg') repeat-y center top;
+  background-size: cover;
+}
+h1{
+  font-family: $gropled; 
+  font-size: 64px;
+  line-height: 90%;
+  // @include respond-max($md) {
+  //     font-size: 2.669vw;
+  //   }
+}
+h2{
+  font-family: $gropled; 
+  font-size: 40px;
+  line-height: 95%;
+  @include respond-max($md){
+    font-size: 2.917vw;
+  }
+  @include respond-max($sm){
+    font-size: 4.375vw;
+  }
+  @include respond-max($xs){
+    font-size: 5.833vw;
+  }
+  @include respond-max($xxs){
+    font-size: 8.750vw;
+  }
+  
+}
+section{
+  margin-bottom: 96px;
+  @include respond-max($md){
+    margin-bottom: 6.667vw;
+  }
+  @include respond-max($sm){
+    margin-bottom: 10vw;
+  }
+  @include respond-max($xs){
+    margin-bottom: 13.333vw;
+  }
+}
 .wrapper {
-  max-width: 100%;
+  width: 100%;
   min-width: 320px;
   min-height: 100%;
   margin: 0 auto;
@@ -26,389 +79,441 @@ html,body{
     flex: 1 0 auto;
   }
 
-  .footer {}
+  .footer {
+    flex: 0 0 auto;
+  }
+}
+
+.container{
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  @include respond-max($md){
+    max-width: none;
+    padding:0 0.834vw;
+  }
+  @include respond-max($sm){
+    padding: 0 1.042vw;
+  }
+  @include respond-max($xs){
+    padding: 2.083vw;
+  }
 }
 
 .hero{
-  padding: 80px 100px 0 100px;
-  position: relative;
-  flex: 1 0 auto;
+  padding: 64px;
   display: flex;
-  flex-flow: column;
-  height: 100svh;
-  @include respond-max(767px) {
-      padding-left: 50px;
-      padding-right: 50px;
+  justify-content: space-between;
+  background-image: url('/assets/images/hero@2x.avif');
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  color: $light;
+  border-radius: 24px;
+  overflow: hidden;
+  @include respond-max($md) {
+      padding: 5vw;
+      background-image: url('/assets/images/hero-md.avif');
+      background-size: cover;
+      min-height: 36.771vw;
+      border-radius: 2.500vw;
     }
-  &__burger{
-    display: none;
-    @include respond-max(767px){
-      position: relative;
-      display: block;
-      width: 80px;
-      height: 60px;
-      z-index: 1001;
-      span{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 8px;
-        transform: scaleY(0.5);
-        background-color: $primaryColor;
-        transform: translate(-50%,-50%);
-        @include respond-max(480px){
-          height: 16px;
-        }
-        &::before,&::after{
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: $primaryColor;
-          transition: all 0.2s ease;
-        }
-        
-        &::before{
-          transform: translateY(-20px);
-          @include respond-max(480px){
-         transform: translateY(-40px);
-          }
-        }
-        &::after{
-          transform: translateY(20px);
-          @include respond-max(480px){
-          transform: translateY(40px);
-          }
-        }
-      }
-      @include respond-max(480px) {
-        width: 130px;
-        height: 130px;
-      }
+    @include respond-max($sm){
+      padding: 3.750vw;
+      border-radius: 3.750vw;
+      background-image: url('/assets/images/hero-sm.avif');
+      background-position: 0 0;
+      background-size: 100%;
     }
-    &.active{
-      span{
-        background-color: transparent;
-        &::after{
-          top: 0;
-          transform: rotate(135deg) translateY(0);
-        }
-        &::before{
-          top: 0;
-          transform: rotate(-135deg) translateY(0);
-        }
-      }
-    }
-  }
-  &__rect{
-    width: 53px;
-    height: 53px;
-    position: absolute;
-    top: 323px;
-    left: 133px;
-    background-image: url("../../assets/images/rect.svg");
-    background-size: 100% 100%;
-    pointer-events: none;
-    z-index: 2;
-    &--bottom{
-      width: 88px;
-      height: 88px;
-      left: 50%;
-      transform: translateX(-50%);
-      top:auto;
-      bottom: 114px;
-      background-image: url("../../assets/images/rect-bottom.svg");
-      @include respond-max(767px){
-        top: auto!important;
-          bottom: 200px;
-      }
-      @include respond-max(480px) {
-          top: auto!important;
-          bottom: 300px;
-        }
-    }
-    &--right{
-      width: 33px;
-      height: 33px;
-      left: auto;
-      right: 347px;
-      top:392px;
-      bottom: 114px;
-      background-image: url("../../assets/images/rect-right.svg");
-      @include respond-max(480px) {
-         top: 600px;
-        }
-    }
-    @include respond-max(767px){
-      width: 100px;
-      height: 100px;
-      top: 300px;
-    }
-  }
-  &__top{
-    &-pattern{
-      width: 196px;
-      height: 42px;
-      position: absolute;
-      top: 73px;
-      left: 0;  
-      background-image: url("../../assets/images/pattern-top.svg");
-      background-size: 100% 100%;
-      pointer-events: none;
-      @include respond-max(767px) {
-        display: none;
-      }
-    }
-  }
-  &::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 435px;
-    height: 435px;
-    background-image: url("../../assets/images/top-corner.svg");
-    background-size: 100% 100%;
-    pointer-events: none;
-    @include respond-max(767px){
-      width: 600px;
-      height: 600px;
-    }
-        @media (max-height:669px){
-          width: 300px;
-          height: 300px;
-        }
-  }
-  &::before{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 584px;
-    height: 337px;
-    background-image: url("../../assets/images/bottom-corner.svg");
-    background-size: 100% 100%;
-    pointer-events: none;
-    @include respond-max(767px) {
-        width: 854px;
-        height: 493px;
-      }
-      @media (max-height:669px){
-        width: 384px;
-        height: 137px;
-      }
-  }
-  &__header{      
-    position: relative;
-    padding-left: 180px;
-    display: flex;
-    align-items: center;    
-    justify-content: space-between;
-    z-index: 2;
-    @include respond-max(767px){
-      padding-left: 0;
-    }
-  }
-  &__dots{
-    display: flex;
-    align-items: center;  
-    gap: 10px;
-    transition: transform 2s ease;
-    &:hover{
-      transform: rotate(360deg);
-    }
-    span{
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: $primaryColor;
-      cursor: pointer;
-    }
-    @include respond-max(767px){
-      display: none;
-    }
-  }
-  &__menu{
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    text-transform: uppercase;
-    @include respond-max(767px){
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-      background-color: $bodyBgColor;
+    @include respond-max($xs){
+      background-image: none;
       flex-flow: column;
-      padding-top: 15vh;
-      gap: 160px;
-      transform: translateX(-100%);
-      transition: transform 0.2s ease;
-      &.active{
-        transition: transform 0.3s ease;
-        transform: translateX(0);
-      }
+      padding: 0;
+      border-radius: 0;
+      overflow: visible;
     }
-    &-link{
-      color: $primaryColor;
-      transition: color 0.2s ease;
-      @include respond-max(1366px){
-        font-size: 34px;
-      }
-      @include respond-max(767px){
-        font-size: 80px;
-      }
-    }
-    &-item{
-      position: relative;
-      &::after{
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: $orange;
-        transform: translateX(-50%) scaleY(0.5);
-        transform-origin: 0 0;
-        transition: width 0.2s ease;
-      }
-      &:hover{
-        &::after{
-          width: 100%;
-        }
-        a{
-          color: $orange;
-        }
-      }
-    }
-  }
   &__info{
-    margin-bottom: 60px;
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    @include respond-max(1023px){
-      flex: 1 0 auto;
-      margin-top: 30vh;
-    }
-    &-box{
-      display: flex;
-      flex-flow: column;      
-    }
-    *{
-      position: relative; 
-      z-index: 1;
-    }
-    &-text{
-      position: relative;
-      padding-right: 114px;
-      &-after{
-        position: absolute;
-        width: 750px;
-        height: 750px;
-        background: url("../../assets/images/circle.svg") no-repeat 0 0;
-        background-size: 100% 100%;
-        top: -295px;
-        left: -605px;
-        z-index: 0;
-        @include respond-max(1366px) {
-            width: 850px;
-            height: 850px;
-            top: -355px;
-            left: -660px
-          }
-        @include respond-max(767px) {
-            width: 1000px;
-            height: 1000px;
-            top: -355px;
-            left: -800px;
-          }
-        @media (max-height:669px) {
-          width: 500px;
-          height: 500px;
-          top: -250px;
-          left: -400px;
-        }
+    width: 50%;
+    @include respond-max($sm) {
+        width: fit-content;
+        flex-grow: 1;
+        white-space: nowrap;
       }
+    @include respond-max($xs){
+      width: 100%;
     }
   }
-  &__socials{
-    display: flex;
-    flex-flow: column;
-    align-items: flex-end;
-    @include respond-max(1023px){
-      margin-top: auto;
+  &__footer{
+    text-align: right;
+    margin-top: auto;
+    @include respond-max($sm){
+      font-size:1.875vw;
+      line-height: 1;
     }
-    &-pattern{
-      margin-bottom: 46px;
-      width: 354px;
-      height: 99px;
-      background: url("../../assets/images/pattern.svg") no-repeat 0 0;
-      background-size: 100% 100%;      
-      @include respond-max(767px){
-       width: 600px;
-       height: 200px;
-       background-size: 100% 100%;
-      }
-    }
-    &-links{
+    @include respond-max($xs){
+      font-size: 2.500vw;
+      color: $dark;
+      text-align: left;
+      margin-top: 5.000vw;
       display: flex;
-      gap: 32px;
-      @include respond-max(767px) {
-          gap: 64px; 
-        }
+      gap: 0.833vw;
+      opacity: .5;
+      br{
+        display: none!important;
+      }
     }
-    &-link{
-      i{
-        color: $primaryColor;
-        display: flex;
-        font-size: 72px;
-        transition: color 0.2s ease;
-        @include respond-max(767px){
-          font-size: 130px;
-        }
-      }
-      &:hover{
-        i{
-          color: $orange;
-        }
-      }
+    @include respond-max($xxs){
+      font-size: 3.750vw;
+      flex-flow: column;
+      text-align: center;
     }
   }
   &__title{
-    font-size: clamp(150px, 15vw, 200px);
-    font-family: $GothamPro;    
-    font-weight: 900;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: 4px;
-    @include respond-max(1366px){
-      font-size: 250px;
+    position: relative;
+    top: 36px;
+    @include respond-max($sm){
+      font-size: 5vw;
     }
-    @include respond-max(767px){
-      font-size: 350px;
+    @include respond-max($xs){
+      padding-top: 8.958vw;
+      padding-left: 6.667vw;
+      top: 0;
+      width: 100%;
+      height: 41.042vw;
+      font-size: 6.667vw;
+      background-image: url('/assets/images/hero-xs.avif');
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 100%;
+      border-radius: 5.000vw;
+    }
+    @include respond-max($xxs){
+      position: relative;
+      background-image: none;
+      color: $dark;
+      font-size: 10.000vw;
+      padding: 0;
+      height: fit-content;
+      border-radius: 0;
+      display: flex;
+      flex-flow: column;
+      &::before{
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 62.500vw;
+        background-image: url('/assets/images/hero-xxs.avif');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100%;
+        border-radius: 5.000vw;
+        overflow: hidden;
+        margin-bottom: 12.500vw;
+      }
     }
   }
-  &__desc{
-    padding-left: 12px;
+ 
+  &__text{
+    padding:32px 0;
     margin: 0;
-    font-size: 48px;
+    font-size: 21px;
+    line-height: 140%;
     font-weight: 500;
-    font-stretch: normal;
-    line-height: 1.4;
-    letter-spacing: 0.96px;
-    @include respond-max(1366px) {
-        font-size: 58px;
+    @include respond-max($md) {
+        // padding: 3.333vw 0;
+        font-size: 1.875vw;
       }
-    @include respond-max(767px) {
-        font-size: 78px;
+    @include respond-max($sm) {
+      font-size: 2.813vw;
+      letter-spacing: -0.03em;
+      line-height: 120%;
+    }
+    @include respond-max($xs){
+      font-size: 3.750vw;
+      padding: 5.000vw 0;
+      color: $dark;
+      white-space: normal;
+      br{
+        display: none!important;
       }
+    }
+    @include respond-max($xxs){
+      padding: 1.667vw 0 7.500vw 0;
+      font-size: 5.625vw
+    }
+  }
+}
+
+.form{
+  padding: 64px 86px 64px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $accent;
+  border-radius: 24px;
+  color: $light;
+  @include respond-max($sm){
+    flex-flow: column;
+    padding: 3.750vw;
+    gap: 3.750vw;
+    border-radius: 3.750vw;
+  }
+  @include respond-max($xs){
+    padding: 5.000vw;
+    gap: 5.000vw;
+    border-radius: 5.000vw;
+  }
+  @include respond-max($xxs){
+    padding: 7.500vw;
+    gap: 7.500vw;
+    border-radius: 5.000vw;
+  }
+  &__info{
+    padding-top: 16px;
+    @include respond-max($sm){
+      padding-top: 1.563vw;
+    }
+    @include respond-max($xxs){
+      padding-top: 3.563vw;
+    }
+  }
+  &__content{
+    @include respond-max($sm){
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-column-gap: 1.250vw;
+    }
+    @include respond-max($xxs){
+      grid-template-columns: 1fr;
+    }
+  }
+  &__submit{
+    margin-top: 18px;
+    @include respond-max($sm){
+      width: fit-content;
+      margin-top: 3.750vw;
+    }
+    @include respond-max($xs){
+      width: fit-content;
+      margin-top: 5.000vw;
+    }
+    @include respond-max($xs){
+      width: 100%;
+      margin-top: 7.500vw;
+    }
+  }
+  
+  &__list{
+    font-size: 21px;
+    line-height: 140%;
+    font-weight: 500;
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+    @include respond-max($md) {
+        font-size: 1.8vw;
+        gap: 1.667vw;
+      }
+    @include respond-max($sm) {
+        font-size: 2.813vw;
+        line-height: 120%;
+        gap: 2.500vw;
+        padding-top: 1.563vw;
+      }
+    @include respond-max($xs) {
+        font-size: 3.750vw;        
+        gap: 3.333vw;
+        padding-top: 1.563vw;
+      }
+    @include respond-max($xxs) {
+        font-size: 5.625vw;        
+        gap: 5.000vw;
+        padding-top: 1.563vw;
+      }
+      
+    &-item{
+      position: relative;
+      display: flex;
+      align-items: center;
+      &::before{
+        content: '';
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        background: url('/assets/images/list.svg') no-repeat 0 0;
+        background-size: 100% 100%;
+        flex-shrink: 0;
+        @include respond-max($sm){
+          width: 3.750vw;
+          height: 3.750vw;
+          margin-right: 1.250vw;
+        }
+        @include respond-max($xs){
+          width: 5.000vw;
+          height: 5.000vw;
+          margin-right:1.667vw;
+        }
+        @include respond-max($xxs){
+          width: 7.500vw;
+          height: 7.500vw;
+          margin-right:2.500vw;
+        }
+      }
+    }
+  }  
+}
+.contacts{
+  display: grid;
+  grid-template-columns: 620px 540px;
+  gap: 8px;
+  @include respond-max($md) {
+    grid-template-columns: 55% 45%;
+    }
+  @include respond-max($sm) {
+    grid-template-columns: 1fr;
+    gap: 1.250vw;
+    }
+  @include respond-max($xs) {
+    gap: 1.667vw;
+    }
+  &__container{
+    overflow: hidden;
+    border-radius: 24px;
+    display: flex;
+    flex-flow: column;
+    @include respond-max($md) {
+        border-radius: 2.500vw;
+      }
+    
+    @include respond-max($sm) {
+      border-radius: 3.750vw;
+    }
+    @include respond-max($xs) {
+      border-radius: 5.000vw;
+    }
+    @include respond-max($xxs) {
+      border-radius: 5.000vw;
+    }
+  }
+  &__submit{
+    margin-top: auto;
+    align-self: flex-start;
+    @include respond-max($sm){
+      margin-top: 3.750vw;
+    }
+    @include respond-max($xs){
+      margin-top: 5.000vw;
+    }
+  }
+  &__title{
+    line-height: 1.5;
+  }
+  &__map{
+    height: 435px;
+    @include respond-max($md) {
+      height: 40vw;
+    }
+    @include respond-max($sm) {
+      height: 39.063vw;
+    }
+    @include respond-max($xs) {
+      height: 45.833vw;
+    }
+    @include respond-max($xxs) {
+      height: 62.500vw;
+    }
+  }
+  &__info{
+    padding: 54px;
+    background-color: $light;
+    @include respond-max($md) {
+        padding: 5.000vw;
+      }
+    @include respond-max($sm) {
+        padding: 3.750vw;
+      }
+    @include respond-max($xs) {
+        padding: 5.000vw;
+      }
+    @include respond-max($xxs) {
+        padding: 7.500vw;
+      }
+  }
+  &__item{
+    display: flex;
+    gap: 32px;
+    @include respond-max($xxs){
+      flex-flow: column;
+    }
+    &+&{
+      margin-top: 20px;
+      @include respond-max($md){
+        margin-top: 2.083vw;
+      }
+      @include respond-max($sm){
+        margin-top: 2.500vw;
+      }
+      @include respond-max($xs){
+        margin-top: 3.333vw;
+      }
+      @include respond-max($xxs){
+        margin-top: 5vw;
+      }
+    }
+    &-box{
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 21px;
+      line-height: 140%;
+      @include respond-max($md){
+        font-size: 1.8vw;
+      }
+      @include respond-max($sm){
+        font-size: 2.813vw;
+        line-height: 120%;
+      }
+      @include respond-max($xs){
+        font-size: 3.750vw;
+        align-items: flex-start;
+      }
+      @include respond-max($xxs){
+        font-size: 5.625vw;      
+        span{
+          padding-top: .5vw;
+        }  
+      }
+      i{
+       width: 24px;
+       height: 24px;
+       margin-right: 8px;
+       flex-shrink: 0;
+      @include respond-max($md){
+        width: 2.5vw;
+        height: 2.5vw;
+      }
+      @include respond-max($sm){
+        width: 3.750vw;
+        height: 3.750vw;
+        margin-right: 1.250vw;
+      }
+      @include respond-max($xs) {
+        width: 5.000vw;
+        height: 5.000vw;
+        margin-right: 1.667vw;
+      }
+      @include respond-max($xxs) {
+        width: 7.500vw;
+        height: 7.500vw;
+        margin-right: 2.500vw;
+      }
+       svg{
+         width: 100%;
+         height: 100%;
+       }
+      }
+    }
   }
 }

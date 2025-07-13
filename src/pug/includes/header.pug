@@ -1,0 +1,15 @@
+- 
+  items = [
+    { text: 'О системе', href: '#' },
+    { text: 'Архитектура', href: '#' },
+    { text: 'Мнения', href: '#' },
+    { text: 'Попробовать', href: '#', active: true },
+    { text: 'Для своих', href: '#' }
+  ]
+
+header.header
+  a.header__logo(href="/" aria-label="Rocont главная")
+    +icon('logo')
+  +menu(items, 'header')
+  .header__burger.hidden-sm
+    span

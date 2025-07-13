@@ -1,0 +1,215 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use "sass:color";
+
+.header{
+  padding: 16px 30px 16px 24px;
+  margin: 8px 0;
+  background-color: $light;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include respond-max($md){
+    padding: 1.667vw 3.125vw 1.667vw 2.500vw;
+    margin: 0.833vw 0;
+    border-radius: 2.500vw;
+  }
+  @include respond-max($sm){
+    padding: 2.500vw 0;
+    margin: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+    @include respond-max($xs){
+      padding: 6.667vw 0 3.333vw;
+    }
+   
+  &__logo{
+    width: 130px;
+    height: 36px;
+    display: flex;
+    @include respond-max($md) {
+        width: 13.542vw;
+        height: 3.750vw;
+      }
+    @include respond-max($sm){
+      width:18.750vw;
+      height: 5.625vw;
+    }
+    @include respond-max($xs){
+      width:27.083vw;
+      height: 7.500vw;
+    }
+    @include respond-max($xxs){
+      width:40.625vw;
+      height:11.250vw;
+    }
+    svg{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__burger{
+    position: relative;
+    width: 5.625vw;
+    height: 5.625vw;
+    background-color: $accent;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    @include respond-max($sm){
+      display: flex;
+    }
+    @include respond-max($xs){
+      width: 7.500vw;
+      height: 7.500vw
+    }
+    @include respond-max($xxs){
+      width: 11.250vw;
+      height: 11.250vw
+    }
+    span{
+      position: relative;
+      width: 2.813vw;
+      height: 0.313vw;
+      background-color: $light;
+      border-radius: 1.563vw;
+      @include respond-max($xs){
+        width: 3.750vw;
+        height: 0.417vw;
+      }
+      @include respond-max($xxs){
+        width: 5.625vw;
+        height: 0.625vw;
+      }
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0.781vw;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $light;
+        border-radius: 1.563vw;
+        @include respond-max($xs){
+          top: 1.042vw;
+        }
+        @include respond-max($xxs){
+          top: 1.563vw;
+        }
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        top: -0.781vw;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $light;
+        border-radius: 1.563vw;
+        @include respond-max($xs) {
+            top: -1.042vw;
+          }
+        @include respond-max($xxs){
+          top: -1.563vw;
+        }
+      }
+    }
+    &.active{
+      span{
+        background-color: transparent;
+        &::after{
+          top: 0;
+          transform: rotate(135deg);
+        }
+        &::before{
+          top: 0;
+          transform: rotate(-135deg);
+        }
+      }
+    }
+  }
+  &__menu{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    @include respond-max($sm){
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($dark,.98);
+      z-index: 1000;
+      flex-flow: column;
+      align-items: flex-start;
+      padding-top: 10vw;
+      gap: 0;
+      transform: translateX(-100%);
+      transition: transform .3s ease;
+      &.active{
+        transform: translateX(0);
+      }
+      @include respond-max($xs){
+        padding-top: 20vw;
+      }
+    }
+    &-item{
+      position: relative;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $dark;
+      border-radius: 40px;
+      font-weight: 500;
+      line-height: 1;
+      @include respond-max($sm){
+        padding: 0 1.563vw;
+        width: 100%;
+        color: $light;
+        font-size: 2.5vw;
+        border-radius: 0;
+        line-height: 2.5;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+          &::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: clamp(1px, 0.1vw, 1px);
+            background-color: $light;
+            opacity: 0.3;
+          }
+        
+      }
+      @include respond-max($xs){
+        padding: 0 2.083vw;
+        font-size: 3.281vw;
+      }
+      @include respond-max($xxs){
+        padding: 0 3.125vw;
+        font-size: 6.563vw;
+      }
+      &.active{
+        background-color: $accent;
+        color: #fff;
+        @include respond-max($sm){
+        &::after{
+          display: none;
+        }
+        }
+      }
+    }
+    
+  }
+}
+
+.contacts{
+  margin-bottom: 0;
+}

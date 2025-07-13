@@ -1,29 +1,28 @@
 @font-face {
-  font-family: 'Geometria';
+  font-family: 'TildaSans-VF';
   src: 
-    url('/assets/fonts/Geometria-Regular.woff2') format('woff2'),
-    url('/assets/fonts/Geometria-Regular.woff') format('woff');
+    url('/assets/fonts/TildaSans-VF.woff2') format('woff2'),
+    url('/assets/fonts/TildaSans-VF.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: 'Geometria';
+  font-family: 'TildaSans-VF';
   src: 
-    url('/assets/fonts/Geometria-Medium.woff2') format('woff2'),
-    url('/assets/fonts/Geometria-Medium.woff') format('woff');
+    url('/assets/fonts/TildaSans-Mediumwoff2') format('woff2'),
+    url('/assets/fonts/TildaSans-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'GothamPro';
+  font-family: 'Gropled';
   src: 
-    url('/assets/fonts/GothamPro-Black.woff2') format('woff2'),
-    url('/assets/fonts/GothamPro-Black.woff') format('woff');
-  font-weight: 900;
+    url('/assets/fonts/GropledBold.woff2') format('woff2'),
+    url('/assets/fonts/GropledBold.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

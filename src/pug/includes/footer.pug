@@ -1,0 +1,15 @@
+- 
+  footerItems = [
+    { text: 'О системе', href: '#' },
+    { text: 'Архитектура', href: '#' },
+    { text: 'Мнения', href: '#' },
+    { text: 'Попробовать', href: '#', active: true },
+    { text: 'Для своих', href: '#' }
+  ]
+footer.footer
+  +menu(items, 'footer')
+  .footer__info
+    .footer__info-item Коллаген © 2025
+    .footer__info-item Политика обработки чего-то личного
+  a.footer__logo(href="/" aria-label="Rocont главная")
+    +icon('logo')

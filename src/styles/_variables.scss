@@ -1,15 +1,20 @@
 // Fonts
-$Geometria : 'Geometria', sans-serif;
-$GothamPro : 'GothamPro', sans-serif;
+$tildaSans : 'TildaSans-VF', sans-serif;
+$gropled : 'Gropled', sans-serif;
 
 // Colors
-$bodyBgColor:#131212;
-$primaryColor:#FFFFFF;
-$orange:#FB6542;
+$bodyColor:#F6F6F6;
+$dark:#2E2D2B;
+$light:#FFFFFF;
+$accent:#1F8B48;
+$placeholder:#2E2D2B;
 
 
 // Breakpoints
-$xs: 480px;
-$sm: 767px;
-$lg: 1023px;
-$xl: 1335px;
+$mdl: 1200px;
+$md: 1199px;
+$sml: 960px;
+$sm: 959px;
+$xsl: 640px;
+$xs: 639px;
+$xxs: 479px;

@@ -76,18 +76,28 @@ function moveScriptsToBody() {
   return {
     name: 'move-scripts-to-body',
     transformIndexHtml(html) {
-      const moduleScripts = html.match(/<script[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g) || []
-      let newHtml = html
-      moduleScripts.forEach(script => {
-        newHtml = newHtml.replace(script, '')
-      })
+      const moduleScripts = html.match(/<script[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g) || [];
+
+      // Фильтруем скрипты: НЕ перемещать если src содержит 'api-maps.yandex'
+      const scriptsToMove = moduleScripts.filter(script => {
+        return !script.includes('api-maps.yandex');
+      });
+
+      let newHtml = html;
+
+      // Убираем только те скрипты, которые будем переносить
+      scriptsToMove.forEach(script => {
+        newHtml = newHtml.replace(script, '');
+      });
+
       return newHtml.replace(
         '</body>',
-        moduleScripts.join('\n') + '</body>'
-      )
+        scriptsToMove.join('\n') + '</body>'
+      );
     }
   }
 }
+
 
 export default defineConfig({
   root: 'src',

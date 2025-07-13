@@ -1,7 +1,7 @@
 @font-face {
     font-family: "iconfont";
-    src: url("../fonts/iconfont.woff?f1cf7353fb23fd23ea904ca652e3532c") format("woff"),
-url("../fonts/iconfont.woff2?f1cf7353fb23fd23ea904ca652e3532c") format("woff2");
+    src: url("../fonts/iconfont.woff?6d00596927ab3c10858236edff7fae5b") format("woff"),
+url("../fonts/iconfont.woff2?6d00596927ab3c10858236edff7fae5b") format("woff2");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -15,15 +15,18 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-telegram:before {
+.icon-tel:before {
     content: "\f101";
 }
-.icon-linkedin:before {
+.icon-map:before {
     content: "\f102";
 }
-.icon-instagram:before {
+.icon-mail:before {
     content: "\f103";
 }
-.icon-facebook:before {
+.icon-clock:before {
     content: "\f104";
+}
+.icon-arrow:before {
+    content: "\f105";
 }
