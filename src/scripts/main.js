@@ -127,3 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 400); // чуть больше времени, чем transition в SCSS
   });
+
+  
+  document.addEventListener('DOMContentLoaded',()=>{
+  const ua = navigator.userAgent;
+  const isMac = /Macintosh/.test(ua);
+  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  
+  if (isMac || isIOS) {
+    document.body.classList.add('is-apple');
+  }
+});
