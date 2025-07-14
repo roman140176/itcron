@@ -129,12 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   
-  document.addEventListener('DOMContentLoaded',()=>{
-  const ua = navigator.userAgent;
-  const isMac = /Macintosh/.test(ua);
-  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  document.addEventListener('DOMContentLoaded', () => {
+    const ua = navigator.userAgent;
+    const platform = navigator.platform;
   
-  if (isMac || isIOS) {
-    document.body.classList.add('is-apple');
-  }
-});
+    const isMac = /Macintosh/.test(ua) || /Mac/.test(platform);
+    const isIOS = /iPhone|iPad|iPod/.test(ua);
+    const isWindows = /Win/.test(platform) || /Windows/.test(ua);
+  
+    if (isMac || isIOS) {
+      document.body.classList.add('is-apple');
+    }
+  
+    if (isWindows) {
+      document.body.classList.add('is-windows');
+    }
+  });
+  
