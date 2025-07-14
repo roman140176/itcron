@@ -49,7 +49,7 @@ h1{
   }
   .hero__text{
     @include respond-max($xxs) {
-      padding: 1.667vw 0!important;
+      padding: 5.67vw 0 7.67vw!important;
       }
   }
   .hero__title:before{
