@@ -122,11 +122,11 @@ export default defineConfig({
         plugins: [
           {
             name: 'removeDimensions',
-            active: false, // 👈 сохраняем width/height
+            active: false, //  сохраняем width/height
           },
           {
             name: 'removeViewBox',
-            active: false, // 👈 если хочешь сохранить viewBox (по желанию)
+            active: false, //  если хочешь сохранить viewBox (по желанию)
           }
         ]
       }
