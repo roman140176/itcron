@@ -42,6 +42,17 @@ h1{
   .form__title,.contacts__title{
     margin-bottom: 0.5em;
   }
+  .hero__title{
+    @include respond-max($xs){
+      padding-top: 6.667vw!important;
+    }
+  }
+  .hero__title:before{
+    @include respond-max($xxs){
+      padding-top: 0!important;
+      margin-bottom: 7.500vw!important;
+    }
+  }
 }
 h2{
   font-family: $gropled; 
