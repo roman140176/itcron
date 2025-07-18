@@ -1,178 +1,58 @@
 @use '../variables' as *;
 @use '../mixins' as *;
-.preview{
-  display: flex;
-  gap: 8px;  
-  @include respond-max($md) {
-      gap: 0.833vw;
-    }
-  @include respond-max($sm){
-    flex-flow: column;
-    gap: 1.250vw;
+
+.hero{
+  position: relative;
+  color: $bodyColor; 
+  margin-bottom: 72px;
+  &__info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
-  @include respond-max($xs){
-    gap: 1.667vw;
+  &__title{
+    font-size: 72px;
+    line-height: 88%;
+    font-weight: normal;
+    letter-spacing: -0.02em;
   }
-  @include respond-max($xxs) {
-    gap: 2.500vw;
+  &__text{
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 130%;
   }
-  &__header{
-    padding-top: 16px;
-    position: relative;
-    z-index: 2;
-    width: 236px;
-    flex-shrink: 0;
-    display: flex;
-    flex-flow: column;
-    @include respond-max($sm) {
-        padding-top: 0;
-        width: 100%;
-      }
+  // cascade
+  .swiper-button-prev,
+  .swiper-button-next{
+    color: $bodyColor;
   }
-    &__slider{
-      width: calc(100% - 236px);
-      overflow: visible!important;
-      @include respond-max($sm) {
-          width: 100%;
-        }
-      &-nav{
-        display: flex;
-        gap: 16px;
-        margin-top: auto;
-        @include respond-max($sm) {
-           display: none;
-          }
-      }
-      &-btn{
-        cursor: pointer;
-        border-radius: 50px;
-        font-size: 20px;
-        width: 48px;
-        height: 20px;
-        background:url('/assets/images/arrow.svg') no-repeat 4px center;
-        background-size: 48px 20px;
-        
-        @include respond-min($md){
-          width: 5vw;
-          height: 2.083vw;
-          background-position: 0.417vw center;
-          background-size: 5vw 2.083vw;
-        }
-        &:not(.swiper-button-disabled){
-          background: $accent url('/assets/images/arrow-white.svg') no-repeat 4px center;
-          background-size: 48px 20px;
-          i{
-            color: $light;
-          }
-          @include respond-min($md){
-              width: 5vw;
-              height: 2.083vw;
-              background-position: 0.417vw center;
-              background-size: 5vw 2.083vw;
-          }
-        }
-      }
-      &-next{
-        transform: scale(-1,1);
-      }
-    }
-  &__slide{
-    border-radius: 24px;
-    overflow: hidden;
-    @include respond-min($mdl) {
-        &:hover{
-          .preview__slide-content{
-            opacity: 1;
-          }
-        }
-      }
-    @include respond-max($mdl) {
-      border-radius: 2.500vw;
-    }
-    
-    @include respond-max($sm) {
-      border-radius: 3.750vw;
-    }
-    @include respond-max($xs) {
-      height: 58.333vw!important;
-      border-radius: 5.000vw;
-    }
-    @include respond-max($xxs) {
-      height: 87.500vw!important;
-      border-radius: 7.500vw;
-    }
-    &.is-hidden {
-      opacity: 0;
-      @include respond-max($xs){
-        opacity: 1;
-      }
-      }
-    img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    &-content{
-      padding: 32px;
-      position: absolute;
-      inset:0;
+  img{
+    display: block;
+  }
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal{
+      padding: 13px 24px;
+      bottom: 39px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      border-radius: 16px;
       display: flex;
-      flex-flow: column;
-      justify-content: flex-end;
-      color: $light;
-      z-index: 1;
-      transition: opacity 0.3s ease-in-out;
-      @include respond-min($mdl) {
-        opacity: 0;
+      gap: 8px;
+      width: fit-content;
+      left: 50%;
+      transform: translateX(-50%);
+      &>.swiper-pagination-bullet{
+        margin: 0;
+        width: 6px;
+        height: 6px;
+        cursor: pointer;
+        &.swiper-pagination-bullet-active{
+          background-color: $bodyColor;
+        }
       }
-    @include respond-max($xs) {
-      padding: 3.750vw;
-    }
-    @include respond-max($xxs) {
-      padding: 7.500vw;
-    }
-      
-      
-    }
-    &-title{
-      position: relative;
-      top: 15px;
-      font-family: $gropled;
-      font-size: 24px;
-      margin-top: 0;
-      margin-bottom: 0;      
-      @include respond-max($md) {
-          font-size: 2.083vw;
-        }
-      @include respond-max($sm) {
-          font-size: 3.125vw;
-        }
-      @include respond-max($xs) {
-          font-size: 4.167vw;
-        }
-      @include respond-max($xxs) {
-          font-size: 6.250vw;
-        }
-    }
-    &-text{
-      padding-top: 8px;
-      margin: 0;
-    }
-  }
-  .swiper-wrapper{
-    gap: 8px;
-    @include respond-max($md) {
-        gap: 0.833vw;
-      }
-    @include respond-max($sm){
-      gap: 1.250vw;
-    }
-    @include respond-max($xs){
-      gap: 1.667vw;
-    }
-    @include respond-max($xxs){
-      gap: 2.500vw;
-    }
   }
 }

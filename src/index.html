@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocont</title>
+    <title>ITS-AGENCY</title>
     <link rel="stylesheet" href="/styles/main.scss">
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
   </head>
   <body>
     <div id="preloader">
@@ -13,159 +12,128 @@
     </div>
     <div class="wrapper">
       <main class="content"> 
-        <div class="container">
-          <header class="header"><a class="header__logo" href="/" aria-label="Rocont главная">
+        <header class="header">
+          <div class="container header__container"><a class="header__logo" href="/" aria-label="Главная">
               <svg>
                 <use xlink:href="#icon-logo"></use>
               </svg></a>
             <ul class="header__menu">
-              <li class="header__menu-item "><a class="header__menu-link" href="#">О системе</a></li>
-              <li class="header__menu-item "><a class="header__menu-link" href="#">Архитектура</a></li>
-              <li class="header__menu-item "><a class="header__menu-link" href="#">Мнения</a></li>
-              <li class="header__menu-item active"><a class="header__menu-link" href="#">Попробовать</a></li>
-              <li class="header__menu-item "><a class="header__menu-link" href="#">Для своих</a></li>
+              <li class="header__menu-item "><a class="header__menu-link" href="#">Продукты</a></li>
+              <li class="header__menu-item "><a class="header__menu-link" href="#">Цвета</a></li>
+              <li class="header__menu-item "><a class="header__menu-link" href="#">Вдохновение</a></li>
+              <li class="header__menu-item "><a class="header__menu-link" href="#">Советы</a></li>
+              <li class="header__menu-item "><a class="header__menu-link" href="#">Найти магазин</a></li>
             </ul>
-            <div class="header__burger hidden-sm"><span></span></div>
-          </header>
-          <section class="hero">
-            <aside class="hero__info">
-              <h1 class="hero__title">Просто <br class="hidden-xs">потому <br>что можем</h1>
-              <p class="hero__text hidden-md">Мы запустили основной цикл в 06:42. <br>Результаты наблюдаются, но не зафиксированы. <br>Рекомендуем сохранять спокойствие до <br>следующего сигнала.</p>
-              <p class="hero__text hidden-sm">Мы сделали это средство не ради прибыли, <br>а из любви к красивым словам. Один стик <br>в день — и вы чувствуете, что делаете что-то <br>важное. Что именно — решать вам. <br>и красивой!</p><a class="btn hero__btn" href="javascript;" onclick="return false"><span class="btn__text">Попробовать просто так</span><i class="btn__icon btn__icon--hero">
-                  <svg>
-                    <use xlink:href="#icon-arrow_white"></use>
-                  </svg></i></a>
+            <div class="header__burger"><span></span></div>
+            <div class="header__contact"><a class="header__phone" href="tel:+7 (495) 221-77-69">+7 (495) 221-77-69</a><span class="header__contact-text">Заказать звонок</span></div>
+            <div class="header__icons"><span class="header__icon header__icon--search">
+                <svg>
+                  <use xlink:href="#icon-search"></use>
+                </svg></span><span class="header__icon header__icon--user">
+                <svg>
+                  <use xlink:href="#icon-user"></use>
+                </svg></span><span class="header__icon header__icon--heart">
+                <svg>
+                  <use xlink:href="#icon-heart"></use>
+                </svg></span><span class="header__icon header__icon--cart">0</span>
+            </div>
+          </div>
+        </header>
+        <section class="hero"> 
+          <div class="swiper hero__slider">
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+              <div class="swiper-slide hero__slide">
+                <div class="hero__info" data-swiper-parallax="-200">
+                  <h2 class="hero__title">Краски</h2>
+                  <p class="hero__text">Идеально подходят для стен и других поверхностей.<br>Найди свой идеальный цвет!</p>
+                </div>
+                <picture><img src="/assets/images/bg.jpg" srcset="/assets/images/bg.avif 1x, /assets/images/bg@2x.avif 2x"/></picture>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="catalog">
+          <div class="container catalog__container">
+            <aside class="catalog__filters">
+              <form class="catalog__filters-form" id="filters">
+                <label class="catalog__filters-label">
+                  <input class="hidden" type="checkbox" name="isNew">
+                  <mark class="catalog__filters-mark"></mark><span class="catalog__filters-name">Новинки</span>
+                </label>
+                <label class="catalog__filters-label">
+                  <input class="hidden" type="checkbox" name="inStock">
+                  <mark class="catalog__filters-mark"></mark><span class="catalog__filters-name">Есть в наличии</span>
+                </label>
+                <label class="catalog__filters-label">
+                  <input class="hidden" type="checkbox" name="isContract">
+                  <mark class="catalog__filters-mark"></mark><span class="catalog__filters-name">Контрактные</span>
+                </label>
+                <label class="catalog__filters-label">
+                  <input class="hidden" type="checkbox" name="isExclusive">
+                  <mark class="catalog__filters-mark"></mark><span class="catalog__filters-name">Эксклюзивные</span>
+                </label>
+                <label class="catalog__filters-label">
+                  <input class="hidden" type="checkbox" name="isSale">
+                  <mark class="catalog__filters-mark"></mark><span class="catalog__filters-name">Распродажа</span>
+                </label>
+              </form>
             </aside>
-            <div class="hero__footer">
-              <div class="hero__footer-item">Сертификат есть. Но это не точно.</div>
-              <div class="hero__footer-item">СГР №AM.01.01 <br class="hidden-sm">.01.003.R.00 o47 4.06.24</div>
-            </div>
-          </section>
-          <section class="preview"> 
-            <header class="preview__header">
-              <h2 class="preview__title">Это — не совсем то, что вы думаете</h2>
-              <div class="preview__slider-nav">
-                <div class="preview__slider-btn preview__slider-prev"> </div>
-                <div class="preview__slider-btn preview__slider-next"></div>
-              </div>
-            </header>
-            <div class="swiper preview__slider">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide preview__slide">
-                  <div class="preview__slide-content card">
-                    <h3 class="preview__slide-title">Немного упругости</h3>
-                    <p class="preview__slide-text">Чуть-чуть сияния, и ощущение, что вы о себе позаботились        </p>
+            <main class="catalog__content-wrapper">
+              <header class="catalog__content-header">
+                <p class="catalog__content-qwantity" id="product-count">0</p>
+                <div class="sort-wrapper">
+                  <button class="sort-toggle" type="button">Сначала дорогие</button>
+                  <div class="sort-dropdown hidden">
+                    <div class="sort-option" data-sort="desc_price">Сначала дорогие</div>
+                    <div class="sort-option" data-sort="asc_price">Сначала недорогие</div>
+                    <div class="sort-option" data-sort="desc_popularity">Сначала популярные</div>
                   </div>
-                  <picture><img src="assets/images/slide.jpg" srcset="assets/images/slide.avif 1x,assets/images/slide@2x.avif 2x"></picture>
                 </div>
-                <div class="swiper-slide preview__slide">
-                  <div class="preview__slide-content card">
-                    <h3 class="preview__slide-title">Немного упругости</h3>
-                    <p class="preview__slide-text">Чуть-чуть сияния, и ощущение, что вы о себе позаботились</p>
-                  </div>
-                  <picture><img src="assets/images/slide2.jpg" srcset="assets/images/slide2.avif 1x,assets/images/slide2@2x.avif 2x"></picture>
-                </div>
-                <div class="swiper-slide preview__slide">
-                  <div class="preview__slide-content card">
-                    <h3 class="preview__slide-title">Немного упругости</h3>
-                    <p class="preview__slide-text">Чуть-чуть сияния, и ощущение, что вы о себе позаботились      </p>
-                  </div>
-                  <picture><img src="assets/images/slide3.jpg" srcset="assets/images/slide3.avif 1x,assets/images/slide3@2x.avif 2x"></picture>
-                </div>
-                <div class="swiper-slide preview__slide">
-                  <div class="preview__slide-content card">
-                    <h3 class="preview__slide-title">Немного упругости</h3>
-                    <p class="preview__slide-text">Чуть-чуть сияния, и ощущение, что вы о себе позаботились      </p>
-                  </div>
-                  <picture><img src="assets/images/slide4.jpg" srcset="assets/images/slide4.avif 1x,assets/images/slide4@2x.avif 2x"></picture>
-                </div>
-                <div class="swiper-slide preview__slide">
-                  <div class="preview__slide-content card">
-                    <h3 class="preview__slide-title">Немного упругости</h3>
-                    <p class="preview__slide-text">Чуть-чуть сияния, и ощущение, что вы о себе позаботились        </p>
-                  </div>
-                  <picture><img src="assets/images/slide.jpg" srcset="assets/images/slide.avif 1x,assets/images/slide@2x.avif 2x"></picture>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section class="form">
-            <aside class="form__info">
-              <h2 class="form__title">Если вы тоже решили <br>«а почему бы и нет»</h2>
-              <ul class="form__list">
-                <li class="form__list-item">Можно заказать много</li>
-                <li class="form__list-item">Доступ возможен через северный интерфейс</li>
-                <li class="form__list-item">Можно просто поболтать</li>
-              </ul>
-            </aside>
-            <div class="form__content">
-              <div class="form-group">
-                <input type="text" name="first_name" id="user" value="" placeholder="Имя" autocomplete="first_name"/>
-              </div>
-              <div class="form-group">
-                <input type="tel" name="user_phone" id="phone" value="" placeholder="Телефон" autocomplete="user_fone"/>
-              </div>
-              <label class="form-group__label form__accept-label" for="accept">
-                <input class="hidden" id="accept" type="checkbox" name="accept" checked="checked"/>
-                <mark class="form-group__mark form__accept-mark"></mark><span>Согласен(-на) на обработку чего угодно — лишь бы форма работала</span>
-              </label>
-              <btn class="btn btn--light form__submit" type="submit" onclick="return false"><span class="btn__text">Отправить</span><i class="btn__icon">
-                  <svg>
-                    <use xlink:href="#icon-arrow-green"></use>
-                  </svg></i></btn>
-            </div>
-          </section>
-          <section class="contacts">
-            <div class="contacts__container contacts__info">
-              <h2 class="contacts__title">Контакты</h2>
-              <div class="contacts__items">
-                <div class="contacts__item">
-                  <div class="contacts__item-box"><i> 
-                      <svg>
-                        <use xlink:href="#icon-map"></use>
-                      </svg></i><span>Офис, где делают странные, но симпатичные вещи</span></div>
-                </div>
-                <div class="contacts__item">
-                  <div class="contacts__item-box"><i> 
-                      <svg>
-                        <use xlink:href="#icon-clock"></use>
-                      </svg></i><span>Пн-Пт с 10:00 до 20:00</span></div>
-                </div>
-                <div class="contacts__item"><a class="contacts__item-box" href="tel:8 (800) 444 44 44"><i> 
-                      <svg>
-                        <use xlink:href="#icon-tel"></use>
-                      </svg></i><span>8 (800) 444 44 44</span></a><a class="contacts__item-box" href="tel:8 (800) 888 88 88"><i> 
-                      <svg>
-                        <use xlink:href="#icon-tel"></use>
-                      </svg></i><span>8 (800) 888 88 88</span></a></div>
-                <div class="contacts__item"><a class="contacts__item-box" href="maolto:example@mail.ru"><i>
-                      <svg>
-                        <use xlink:href="#icon-mail"></use>
-                      </svg></i><span>example@mail.ru         </span></a></div>
-              </div><a class="btn contacts__submit" href="javascript;" onclick="return false"><span class="btn__text">Связться</span><i class="btn__icon">
-                  <svg>
-                    <use xlink:href="#icon-arrow_white"></use>
-                  </svg></i></a>
-            </div>
-            <div class="contacts__container contacts__map" id="map"></div>
-          </section>
-          <footer class="footer">
-            <ul class="footer__menu">
-              <li class="footer__menu-item "><a class="footer__menu-link" href="#">О системе</a></li>
-              <li class="footer__menu-item "><a class="footer__menu-link" href="#">Архитектура</a></li>
-              <li class="footer__menu-item "><a class="footer__menu-link" href="#">Мнения</a></li>
-              <li class="footer__menu-item active"><a class="footer__menu-link" href="#">Попробовать</a></li>
-              <li class="footer__menu-item "><a class="footer__menu-link" href="#">Для своих</a></li>
-            </ul>
-            <div class="footer__info">
-              <div class="footer__info-item">Коллаген © 2025</div>
-              <div class="footer__info-item">Политика обработки чего-то личного</div>
-            </div><a class="footer__logo" href="/" aria-label="Rocont главная">
-              <svg>
-                <use xlink:href="#icon-logo"></use>
-              </svg></a>
-          </footer>
-        </div>
+              </header>
+              <main class="catalog__content"></main>
+            </main>
+          </div>
+          <div class="overlay hidden"></div>
+          <div class="loader hidden">Загрузка...    </div>
+        </section>
       </main>
     </div>
     <script type="module" src="/scripts/main.js"></script>

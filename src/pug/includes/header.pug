@@ -1,15 +1,30 @@
 - 
   items = [
-    { text: 'О системе', href: '#' },
-    { text: 'Архитектура', href: '#' },
-    { text: 'Мнения', href: '#' },
-    { text: 'Попробовать', href: '#', active: true },
-    { text: 'Для своих', href: '#' }
+    { text: 'Продукты', href: '#' },
+    { text: 'Цвета', href: '#' },
+    { text: 'Вдохновение', href: '#' },
+    { text: 'Советы', href: '#' },
+    { text: 'Найти магазин', href: '#' }
+  ]
+- 
+  icons = [
+    { icon: 'search'},
+    { icon: 'user'},
+    { icon: 'heart'},
   ]
 
 header.header
-  a.header__logo(href="/" aria-label="Rocont главная")
-    +icon('logo')
-  +menu(items, 'header')
-  .header__burger.hidden-sm
-    span
+  .container.header__container
+    a.header__logo(href="/" aria-label="Главная")
+      +icon('logo')
+    +menu(items, 'header')
+    .header__burger
+      span
+    .header__contact
+      a.header__phone(href="tel:+7 (495) 221-77-69") +7 (495) 221-77-69
+      span.header__contact-text Заказать звонок
+    .header__icons
+      each item in icons
+        span(class=`header__icon header__icon--${item.icon}`)
+          +icon(item.icon)
+      span.header__icon.header__icon--cart 0

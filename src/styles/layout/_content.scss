@@ -5,89 +5,13 @@
 html,body{
   height: 100%;
   width: 100%;
-  font-family: $tildaSans;
+  font-family: $inter;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 112%;
   color: $dark;
-  @include respond-max($md){
-    font-size: 1.667vw;
-  }
-  @include respond-max($sm){
-    font-size: 2.500vw;
-  }
-  @include respond-max($xs){
-    font-size: 3.333vw;
-  }
-  @include respond-max($xxs){
-    font-size: 5.000vw;
-  }
- 
-}
-body{
-  background: $bodyColor url('/assets/images/bg.svg') repeat-y center top;
-  background-size: cover;
-}
-h1{
-  font-family: $gropled; 
-  font-size: 64px;
-  line-height: 90%; 
-}
-.is-apple,.is-windows{
-  h1,h2,h3,.btn__text{
-    top: 0!important;
-  }
-  .form__info{
-    padding-top: 0!important;
-  }
-  .form__title,.contacts__title,.preview__title{
-    margin-bottom: 0.5em;
-  }
-  .hero__title{
-    @include respond-max($xs){
-      padding-top: 6.667vw!important;
-    }
-  }
-  .hero__text{
-    @include respond-max($xxs) {
-      padding: 5.67vw 0 7.67vw!important;
-      }
-  }
-  .hero__title:before{
-    @include respond-max($xxs){
-      padding-top: 0!important;
-      margin-bottom: 7.500vw!important;
-    }
-  }
-}
-h2{
-  font-family: $gropled; 
-  font-size: 40px;
-  line-height: 95%;
-  @include respond-max($md){
-    font-size: 2.917vw;
-  }
-  @include respond-max($sm){
-    font-size: 4.375vw;
-  }
-  @include respond-max($xs){
-    font-size: 5.833vw;
-  }
-  @include respond-max($xxs){
-    font-size: 8.750vw;
-  }
-  
 }
 section{
-  margin-bottom: 96px;
-  @include respond-max($md){
-    margin-bottom: 6.667vw;
-  }
-  @include respond-max($sm){
-    margin-bottom: 10vw;
-  }
-  @include respond-max($xs){
-    margin-bottom: 13.333vw;
-  }
+  margin-bottom: 96px;  
 }
 .wrapper {
   width: 100%;
@@ -110,433 +34,70 @@ section{
 
 .container{
   width: 100%;
-  max-width: 1160px;
-  margin: 0 auto;
-  @include respond-max($md){
-    max-width: none;
-    padding:0 0.834vw;
-  }
-  @include respond-max($sm){
-    padding: 0 1.042vw;
-  }
-  @include respond-max($xs){
-    padding: 2.083vw;
-  }
+  max-width: 1789px;
+  margin: 0 auto; 
 }
 
-.hero{
-  padding: 64px;
-  display: flex;
-  justify-content: space-between;
-  background-image: url('/assets/images/hero@2x.avif');
-  background-size: 100% 100%;
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  color: $light;
-  border-radius: 24px;
-  overflow: hidden;
-  @include respond-max($md) {
-      padding: 5vw;
-      background-image: url('/assets/images/hero-md.avif');
-      background-size: cover;
-      min-height: 36.771vw;
-      border-radius: 2.500vw;
-    }
-    @include respond-max($sm){
-      padding: 3.750vw;
-      border-radius: 3.750vw;
-      background-image: url('/assets/images/hero-sm.avif');
-      background-position: 0 0;
-      background-size: 100%;
-    }
-    @include respond-max($xs){
-      background-image: none;
-      flex-flow: column;
-      padding: 0;
-      border-radius: 0;
-      overflow: visible;
-    }
-  &__info{
-    width: 50%;
-    @include respond-max($sm) {
-        width: fit-content;
-        flex-grow: 1;
-        white-space: nowrap;
-      }
-    @include respond-max($xs){
-      width: 100%;
-    }
-  }
-  &__footer{
-    text-align: right;
-    margin-top: auto;
-    @include respond-max($sm){
-      font-size:1.875vw;
-      line-height: 1;
-    }
-    @include respond-max($xs){
-      font-size: 2.500vw;
-      color: $dark;
-      text-align: left;
-      margin-top: 5.000vw;
-      display: flex;
-      gap: 0.833vw;
-      opacity: .5;
-      br{
-        display: none!important;
-      }
-    }
-    @include respond-max($xxs){
-      font-size: 3.750vw;
-      flex-flow: column;
-      text-align: center;
-    }
-  }
-  &__title{
-    position: relative;
-    top: 36px;
-    @include respond-max($sm){
-      font-size: 5vw;
-    }
-    @include respond-max($xs){
-      padding-top: 8.958vw;
-      padding-left: 6.667vw;
-      top: 0;
-      width: 100%;
-      height: 41.042vw;
-      font-size: 6.667vw;
-      background-image: url('/assets/images/hero-xs.avif');
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      background-size: 100%;
-      border-radius: 5.000vw;
-    }
-    @include respond-max($xxs){
-      position: relative;
-      background-image: none;
-      color: $dark;
-      font-size: 10.000vw;
-      padding: 0;
-      height: fit-content;
-      border-radius: 0;
-      display: flex;
-      flex-flow: column;
-      &::before{
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 62.500vw;
-        background-image: url('/assets/images/hero-xxs.avif');
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-size: 100%;
-        border-radius: 5.000vw;
-        overflow: hidden;
-        margin-bottom: 12.500vw;
-      }
-    }
-  }
- 
-  &__text{
-    padding:32px 0;
-    margin: 0;
-    font-size: 21px;
-    line-height: 140%;
-    font-weight: 500;
-    @include respond-max($md) {
-        // padding: 3.333vw 0;
-        font-size: 1.875vw;
-      }
-    @include respond-max($sm) {
-      font-size: 2.813vw;
-      letter-spacing: -0.03em;
-      line-height: 120%;
-    }
-    @include respond-max($xs){
-      font-size: 3.750vw;
-      padding: 5.000vw 0;
-      color: $dark;
-      white-space: normal;
-      br{
-        display: none!important;
-      }
-    }
-    @include respond-max($xxs){
-      padding: 1.667vw 0 7.500vw 0;
-      font-size: 5.625vw
-    }
-  }
-}
 
-.form{
-  padding: 64px 86px 64px;
-  display: flex;
-  justify-content: space-between;
-  background-color: $accent;
-  border-radius: 24px;
-  color: $light;
-  @include respond-max($sm){
-    flex-flow: column;
-    padding: 3.750vw;
-    gap: 3.750vw;
-    border-radius: 3.750vw;
+.catalog{
+  &__container{
+    display: flex;
+    justify-content: space-between;
   }
-  @include respond-max($xs){
-    padding: 5.000vw;
-    gap: 5.000vw;
-    border-radius: 5.000vw;
-  }
-  @include respond-max($xxs){
-    padding: 7.500vw;
-    gap: 7.500vw;
-    border-radius: 5.000vw;
-  }
-  &__info{
-    padding-top: 16px;
-    @include respond-max($sm){
-      padding-top: 1.563vw;
-    }
-    @include respond-max($xxs){
-      padding-top: 3.563vw;
-    }
+  &__filters{
+    width: 303px;
   }
   &__content{
-    @include respond-max($sm){
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      grid-column-gap: 1.250vw;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 16px 24px;
+    &-wrapper{
+      flex-grow: 1;
     }
-    @include respond-max($xxs){
-      grid-template-columns: 1fr;
-    }
-  }
-  &__submit{
-    margin-top: 18px;
-    @include respond-max($sm){
-      width: fit-content;
-      margin-top: 3.750vw;
-    }
-    @include respond-max($xs){
-      width: fit-content;
-      margin-top: 5.000vw;
-    }
-    @include respond-max($xs){
-      width: 100%;
-      margin-top: 7.500vw;
-    }
-  }
-  
-  &__list{
-    font-size: 21px;
-    line-height: 140%;
-    font-weight: 500;
-    display: flex;
-    flex-flow: column;
-    gap: 16px;
-    @include respond-max($md) {
-        font-size: 1.8vw;
-        gap: 1.667vw;
-      }
-    @include respond-max($sm) {
-        font-size: 2.813vw;
-        line-height: 120%;
-        gap: 2.500vw;
-        padding-top: 1.563vw;
-      }
-    @include respond-max($xs) {
-        font-size: 3.750vw;        
-        gap: 3.333vw;
-        padding-top: 1.563vw;
-      }
-    @include respond-max($xxs) {
-        font-size: 5.625vw;        
-        gap: 5.000vw;
-        padding-top: 1.563vw;
-      }
-      
-    &-item{
-      position: relative;
+    &-header{
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      &::before{
-        content: '';
-        top: 0;
-        left: 0;
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-        background: url('/assets/images/list.svg') no-repeat 0 0;
-        background-size: 100% 100%;
-        flex-shrink: 0;
-        @include respond-max($sm){
-          width: 3.750vw;
-          height: 3.750vw;
-          margin-right: 1.250vw;
-        }
-        @include respond-max($xs){
-          width: 5.000vw;
-          height: 5.000vw;
-          margin-right:1.667vw;
-        }
-        @include respond-max($xxs){
-          width: 7.500vw;
-          height: 7.500vw;
-          margin-right:2.500vw;
-        }
-      }
-    }
-  }  
-}
-.contacts{
-  display: grid;
-  grid-template-columns: 620px 540px;
-  gap: 8px;
-  @include respond-max($md) {
-    grid-template-columns: 55% 45%;
-    }
-  @include respond-max($sm) {
-    grid-template-columns: 1fr;
-    gap: 1.250vw;
-    }
-  @include respond-max($xs) {
-    gap: 1.667vw;
-    }
-  &__container{
-    overflow: hidden;
-    border-radius: 24px;
-    display: flex;
-    flex-flow: column;
-    @include respond-max($md) {
-        border-radius: 2.500vw;
-      }
-    
-    @include respond-max($sm) {
-      border-radius: 3.750vw;
-    }
-    @include respond-max($xs) {
-      border-radius: 5.000vw;
-    }
-    @include respond-max($xxs) {
-      border-radius: 5.000vw;
     }
   }
-  &__submit{
-    margin-top: auto;
-    align-self: flex-start;
-    @include respond-max($sm){
-      margin-top: 3.750vw;
-    }
-    @include respond-max($xs){
-      margin-top: 5.000vw;
-    }
-  }
-  &__title{
-    line-height: 1.5;
-  }
-  &__map{
-    height: 435px;
-    @include respond-max($md) {
-      height: 40vw;
-    }
-    @include respond-max($sm) {
-      height: 39.063vw;
-    }
-    @include respond-max($xs) {
-      height: 45.833vw;
-    }
-    @include respond-max($xxs) {
-      height: 62.500vw;
-    }
-  }
-  &__info{
-    padding: 54px;
-    background-color: $light;
-    @include respond-max($md) {
-        padding: 5.000vw;
-      }
-    @include respond-max($sm) {
-        padding: 3.750vw;
-      }
-    @include respond-max($xs) {
-        padding: 5.000vw;
-      }
-    @include respond-max($xxs) {
-        padding: 7.500vw;
-      }
-  }
-  &__item{
-    display: flex;
-    gap: 32px;
-    @include respond-max($xxs){
+  &__filters{
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    &-form{
+      display: flex;
       flex-flow: column;
     }
-    &+&{
-      margin-top: 20px;
-      @include respond-max($md){
-        margin-top: 2.083vw;
-      }
-      @include respond-max($sm){
-        margin-top: 2.500vw;
-      }
-      @include respond-max($xs){
-        margin-top: 3.333vw;
-      }
-      @include respond-max($xxs){
-        margin-top: 5vw;
-      }
-    }
-    &-box{
+    &-label{
       display: flex;
       align-items: center;
-      font-weight: 500;
-      font-size: 21px;
-      line-height: 140%;
-      @include respond-max($md){
-        font-size: 1.8vw;
+      cursor: pointer;
+      &+&{
+        margin-top: 10px;
       }
-      @include respond-max($sm){
-        font-size: 2.813vw;
-        line-height: 120%;
+      input:checked~.catalog__filters-mark{
+        background-color: $green;
+        justify-content: flex-end;
       }
-      @include respond-max($xs){
-        font-size: 3.750vw;
-        align-items: flex-start;
-      }
-      @include respond-max($xxs){
-        font-size: 5.625vw;      
-        span{
-          padding-top: .5vw;
-        }  
-      }
-      i{
-       width: 24px;
-       height: 24px;
-       margin-right: 8px;
-       flex-shrink: 0;
-      @include respond-max($md){
-        width: 2.5vw;
-        height: 2.5vw;
-      }
-      @include respond-max($sm){
-        width: 3.750vw;
-        height: 3.750vw;
-        margin-right: 1.250vw;
-      }
-      @include respond-max($xs) {
-        width: 5.000vw;
-        height: 5.000vw;
-        margin-right: 1.667vw;
-      }
-      @include respond-max($xxs) {
-        width: 7.500vw;
-        height: 7.500vw;
-        margin-right: 2.500vw;
-      }
-       svg{
-         width: 100%;
-         height: 100%;
-       }
+    }
+    &-mark{
+      padding: 7px;
+      margin-right: 12px;
+      position: relative;
+      display: flex;
+      width: 36px;
+      height: 22px;
+      background-color: $lightgray;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      &::after{
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $dark;       
+        transition: all 0.3s ease;
       }
     }
   }

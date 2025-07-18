@@ -4,7 +4,7 @@ import pxToViewport from 'postcss-px-to-viewport-8-plugin';
 export default {
   plugins: [
     pxToViewport({
-      viewportWidth: 1400,
+      viewportWidth: 1920,
       unitToConvert: 'px',
       unitPrecision: 5,
       viewportUnit: 'vw',

@@ -1,0 +1,38 @@
+section.catalog
+  .container.catalog__container
+    aside.catalog__filters
+      form#filters.catalog__filters-form
+        label.catalog__filters-label
+          input.hidden(type="checkbox" name="isNew")
+          mark.catalog__filters-mark
+          span.catalog__filters-name Новинки
+        label.catalog__filters-label
+          input.hidden(type="checkbox" name="inStock")
+          mark.catalog__filters-mark
+          span.catalog__filters-name Есть в наличии
+        label.catalog__filters-label
+          input.hidden(type="checkbox" name="isContract")
+          mark.catalog__filters-mark
+          span.catalog__filters-name Контрактные
+        label.catalog__filters-label
+          input.hidden(type="checkbox" name="isExclusive")
+          mark.catalog__filters-mark
+          span.catalog__filters-name Эксклюзивные
+        label.catalog__filters-label
+          input.hidden(type="checkbox" name="isSale")
+          mark.catalog__filters-mark
+          span.catalog__filters-name Распродажа
+
+    main.catalog__content-wrapper
+      header.catalog__content-header
+        p#product-count.catalog__content-qwantity 0
+        div.sort-wrapper
+          button.sort-toggle(type="button") Сначала дорогие
+          div.sort-dropdown.hidden
+            div.sort-option(data-sort="desc_price") Сначала дорогие
+            div.sort-option(data-sort="asc_price") Сначала недорогие
+            div.sort-option(data-sort="desc_popularity") Сначала популярные
+
+      main.catalog__content
+  div.overlay.hidden
+  div.loader.hidden Загрузка...    

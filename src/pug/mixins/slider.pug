@@ -1,0 +1,12 @@
+//- Миксин одного слайда с повторяющимися данными
+mixin heroSlide(title, text, imgBase)
+  .swiper-slide.hero__slide
+    .hero__info(data-swiper-parallax="-200")
+      h2.hero__title= title
+      p.hero__text !{text}
+    picture
+      img(
+        src=`/assets/images/${imgBase}.jpg`, 
+        srcset=`/assets/images/${imgBase}.avif 1x, /assets/images/${imgBase}@2x.avif 2x`
+      )
+
