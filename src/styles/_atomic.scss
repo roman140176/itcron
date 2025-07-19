@@ -626,6 +626,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: $dark;
+    cursor: pointer;
     @include respond-max($lg){
       width: 16.667vw;
       height: 3.333vw;
