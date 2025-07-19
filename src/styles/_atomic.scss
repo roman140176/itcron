@@ -319,6 +319,9 @@
       text-decoration: line-through;
       font-weight: 300;      
       opacity: 0.6;
+      @include respond-max($xs){
+        display: none;      
+      }
     }
   }
   &__image{
