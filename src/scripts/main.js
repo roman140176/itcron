@@ -5,11 +5,12 @@ if (import.meta.hot) {
 }
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-import { sortLabels } from './config/constants.js';
-
+import { sortLabels,API_URL } from './config/constants.js';
 import { getFiltersFromURL, buildQuery } from './utils/url.js';
 import { fetchProducts } from './services/api.js';
 import { renderProducts } from './render/renderProducts.js';
+import { initCartPopup, addToCart, initClearCartButton } from './cart/cart.js';
+import { updateCartBadge } from './cart/updateTotals.js';
 
 new Swiper('.swiper', {
   loop: true,
@@ -116,4 +117,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   applyFiltersToUI(filters);
   const products = await fetchProducts(filters, loader);
   renderProducts(container, products, countDisplay);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCartPopup();
+  updateCartBadge();
+  initClearCartButton();
+
+  document.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('product-card__btn')) {
+      const id = e.target.dataset.id;
+
+      try {
+        const res = await fetch(`${API_URL}/${id}`);
+
+        if (!res.ok) {
+          throw new Error(`Ошибка запроса: ${res.status} ${res.statusText}`);
+        }
+
+        const product = await res.json();
+
+        if (!product || !product.id) {
+          throw new Error('Некорректные данные товара');
+        }
+
+        addToCart(product);
+      } catch (err) {
+        console.error('Не удалось добавить товар в корзину:', err);
+        alert('Произошла ошибка при добавлении товара. Попробуйте позже.');
+      }
+    }
+  });
 });

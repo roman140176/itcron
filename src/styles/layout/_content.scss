@@ -58,7 +58,16 @@ section{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 44px;
     }
+    &-qwantity{
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    
   }
   &__filters{
     text-transform: uppercase;
