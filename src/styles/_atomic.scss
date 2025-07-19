@@ -230,6 +230,7 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
+    color: $dark;
     &::after{
       content:"";
       width: 7px;
@@ -571,6 +572,7 @@
     cursor: pointer;
     text-transform: uppercase;
     opacity: 0.4;
+    color: $black;
   }
   &__footer{
     display: flex;
@@ -748,7 +750,9 @@
       font-weight: 300; 
       text-decoration: line-through;
       opacity: 0.6;
-      font-size: 3.200vw;
+      @include respond-max($xs) {
+          font-size: 3.200vw;
+        }
     }
   }
   &__controls{
