@@ -1,4 +1,6 @@
 **Нода 18-22**  
 инсталим пакеты  
 **Окружение**  
-pug/scss/js/vite
+pug/scss/js/vite  
+**Сервер**   
+mockapi.io
