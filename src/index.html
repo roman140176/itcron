@@ -13,7 +13,8 @@
     <div class="wrapper">
       <main class="content"> 
         <header class="header">
-          <div class="container header__container"><a class="header__logo" href="/" aria-label="Главная">
+          <div class="container header__container">
+            <div class="header__burger"><span></span></div><a class="header__logo" href="/" aria-label="Главная">
               <svg>
                 <use xlink:href="#icon-logo"></use>
               </svg></a>
@@ -24,7 +25,6 @@
               <li class="header__menu-item "><a class="header__menu-link" href="#">Советы</a></li>
               <li class="header__menu-item "><a class="header__menu-link" href="#">Найти магазин</a></li>
             </ul>
-            <div class="header__burger"><span></span></div>
             <div class="header__contact"><a class="header__phone" href="tel:+7 (495) 221-77-69">+7 (495) 221-77-69</a><span class="header__contact-text">Заказать звонок</span></div>
             <div class="header__icons"><span class="header__icon header__icon--search">
                 <svg>
@@ -38,8 +38,16 @@
                 </svg></span><span class="header__icon header__icon--cart" id="cart">0</span>
             </div>
           </div>
+          <div class="container breadcrumbs">
+            <ul class="breadcrumbs__menu">
+              <li class="breadcrumbs__menu-item "><a class="breadcrumbs__menu-link" href="#">Главная</a></li>
+              <li class="breadcrumbs__menu-item "><a class="breadcrumbs__menu-link" href="#">Продукты</a></li>
+              <li class="breadcrumbs__menu-item "><a class="breadcrumbs__menu-link" href="#">Краски</a></li>
+            </ul>
+          </div>
         </header>
-        <section class="hero"> 
+        <h1 class="main-title container">Краски    </h1>
+        <section class="hero">  
           <div class="swiper hero__slider">
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
@@ -93,6 +101,7 @@
         <section class="catalog">
           <div class="container catalog__container">
             <aside class="catalog__filters">
+              <div class="catalog__filters-close"></div>
               <form class="catalog__filters-form" id="filters">
                 <label class="catalog__filters-label">
                   <input class="hidden" type="checkbox" name="isNew">
@@ -116,8 +125,10 @@
                 </label>
               </form>
             </aside>
+            <div class="catalog__filters-overlay"></div>
             <main class="catalog__content-wrapper">
               <header class="catalog__content-header">
+                <div class="catalog__content-filter">Фильтры</div>
                 <p class="catalog__content-qwantity" id="product-count">0</p>
                 <div class="sort-wrapper">
                   <button class="sort-toggle" type="button">Сначала дорогие</button>
@@ -151,6 +162,7 @@
         </div>
         <div class="cart-popup__overlay"></div>
       </main>
+      <footer class="footer"></footer>
     </div>
     <script type="module" src="/scripts/main.js"></script>
   </body>

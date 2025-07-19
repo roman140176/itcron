@@ -9,9 +9,27 @@ html,body{
   font-size: 16px;
   line-height: 112%;
   color: $dark;
+  @include respond-max($lg){
+    font-size: 1.111vw;
+  } 
+  @include respond-max($md){
+    font-size: 1.615vw;
+  } 
+  @include respond-max($tablet){
+    font-size: 2.086vw;
+  } 
+  @include respond-max($xs){
+    font-size: 4.267vw;
+  } 
 }
 section{
-  margin-bottom: 96px;  
+  margin-bottom: 72px;    
+  @include respond-max($md){
+    margin-bottom: 6.458vw;
+  }
+  @include respond-max($xs){
+    margin-bottom: 15.000vw;
+  }
 }
 .wrapper {
   width: 100%;
@@ -36,21 +54,166 @@ section{
   width: 100%;
   max-width: 1789px;
   margin: 0 auto; 
+  @include respond-max($lg){
+    padding: 0 1.389vw;  
+    max-width: none;
+  }
+  @include respond-max($md){
+    padding: 0 1.615vw;  
+  }
+  @include respond-max($tablet){
+    padding: 0 2.018vw;  
+  }
+  @include respond-max($xs){
+    padding: 0 6.400vw;  
+  }
 }
 
 
 .catalog{
+  margin-bottom: 141px;
+  @include respond-max($md) {
+    margin-bottom: 14.127vw;
+  }
+  @include respond-max($xs) {
+    margin-bottom: 17.067vw;
+  }
   &__container{
     display: flex;
     justify-content: space-between;
   }
   &__filters{
     width: 303px;
+    position: relative;
+    
+    background-color: $bodyColor;
+    @include respond-max($lg){
+      width: 19.167vw;    
+    }
+    @include respond-max($md){
+      position: fixed;    
+      top: 50%;
+      left: -100%;
+      width: 30.272vw;
+      height: fit-content;
+      padding: 3.229vw;    
+      transform: translateY(-50%);  
+      transition: all .3s ease-in-out;
+      &.active{
+        z-index: 1001;
+        left: 1.615vw;
+        &+.catalog__filters-overlay {
+            opacity: 1;
+            pointer-events: all;
+          }
+      }
+    }
+    @include respond-max($tablet){
+      position: fixed;    
+      border-radius: 5.215vw 5.215vw 0 0;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      padding: 7.040vw 3.129vw 3.129vw;    
+      transform: translateY(0);  
+      transition: all .2s ease-in-out;
+      &.active{
+        left: 0;
+        top: 50%;        
+      }
+    }
+    @include respond-max($tablet){
+      position: fixed;    
+      border-radius: 6.400vw 6.400vw 0 0;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      padding: 11.733vw 6.400vw 6.400vw;    
+      transform: translateY(0);  
+      transition: all .2s ease-in-out;     
+    }
+    &-overlay{
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 99;
+      transition: all .3s ease-in-out;
+    }
+    &-close{
+      display: none;
+      top: 1.615vw;
+      right: 1.615vw;
+      position: absolute;  
+      width: 3.229vw;    
+      height: 3.229vw;
+      border-radius: 50%;
+      background: url(/assets/images/close.svg) no-repeat center center;
+      background-size: 1.413vw 1.413vw;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      @include respond-max($md){
+        display: block;      
+      }
+      @include respond-max($tablet){
+        right: auto;   
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: none;
+        border: none;
+        height: 0.782vw;
+        width: 4.172vw;
+        border-radius: 5.215vw;
+        background-color: rgba($black,.6);
+      }
+      @include respond-max($xs){        
+        top: 3.200vw;
+        width: 7.467vw;
+        height: 1.067vw;
+        border-radius: 10vw;
+      }
+    }
   }
   &__content{
     display: grid;
     grid-template-columns: repeat(5,1fr);
     gap: 16px 24px;
+    @include respond-max($lg){
+      gap: 1.111vw 1.667vw;
+    }
+    @include respond-max($md){
+      grid-template-columns: repeat(3,1fr);    
+      gap: 1.615vw 2.422vw;
+    }
+    @include respond-max($tablet){          
+      gap: 2.086vw 3.129vw;
+    }
+    @include respond-max($xs){          
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4.000vw 6.400vw;
+    }
+    &-filter{
+      display: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      @include respond-max($md){
+        display: block;      
+        font-size: 1.211vw;
+      }
+      @include respond-max($tablet){
+        font-size: 1.565vw;
+      }
+      @include respond-max($xs){
+        font-size: 3.200vw;
+      }
+    }
     &-wrapper{
       flex-grow: 1;
     }
@@ -59,6 +222,15 @@ section{
       justify-content: space-between;
       align-items: center;
       margin-bottom: 44px;
+      @include respond-max($md){
+        margin-bottom: 4.167vw;      
+      }
+      @include respond-max($tablet){
+        margin-bottom: 5.215vw;      
+      }
+      @include respond-max($xs){
+        margin-bottom: 6.400vw;      
+      }
     }
     &-qwantity{
       margin: 0;
@@ -66,6 +238,12 @@ section{
       letter-spacing: 0.06em;
       font-weight: 500;
       text-transform: uppercase;
+      @include respond-max($lg){
+        font-size: 0.833vw;      
+      }
+      @include respond-max($md){
+        display: none;    
+      }
     }
     
   }
@@ -74,6 +252,18 @@ section{
     font-size: 12px;
     letter-spacing: 0.06em;
     line-height: 1;
+    @include respond-max($lg){
+      font-size: 0.833vw;    
+    }
+    @include respond-max($md){
+      font-size: 1.211vw;    
+    }
+    @include respond-max($tablet){
+      font-size: 2.086vw;    
+    }
+    @include respond-max($xs){
+      font-size: 3.200vw;    
+    }
     &-form{
       display: flex;
       flex-flow: column;
@@ -84,6 +274,18 @@ section{
       cursor: pointer;
       &+&{
         margin-top: 10px;
+        @include respond-max($lg){
+          margin-top: 0.694vw;        
+        }
+        @include respond-max($md){
+          margin-top: 1.389vw;        
+        }
+        @include respond-max($tablet){
+          margin-top: 2.389vw;        
+        }
+        @include respond-max($xs){
+          margin-top: 2.667vw;        
+        }
       }
       input:checked~.catalog__filters-mark{
         background-color: $green;
@@ -91,10 +293,11 @@ section{
       }
     }
     &-mark{
-      padding: 7px;
+      padding: 0 7px;
       margin-right: 12px;
       position: relative;
       display: flex;
+      align-items: center;
       width: 36px;
       height: 22px;
       background-color: $lightgray;
@@ -107,6 +310,48 @@ section{
         border-radius: 50%;
         background-color: $dark;       
         transition: all 0.3s ease;
+        @include respond-max($lg){
+          width: .7vw;
+          height: .7vw;        
+        }
+        @include respond-max($md){
+          width: 0.807vw;
+          height: 0.807vw;        
+        }
+        @include respond-max($tablet){
+          width:1.043vw;
+          height:1.043vw;        
+        }
+        @include respond-max($xs){
+          width:2.133vw;
+          height:2.133vw;        
+        }
+      }
+
+      @include respond-max($lg){
+        padding:0 0.486vw;
+        width: 2.5vw;
+        height: 1.528vw;      
+        margin-right: 0.833vw;
+      }
+      @include respond-max($md){
+        padding: 0 0.706vw;
+        width: 3.532vw;
+        height: 2.220vw;    
+        margin-right: 1.211vw;  
+      }
+      @include respond-max($tablet){
+        padding: 0 0.913vw;
+        width: 4.694vw;
+        height: 2.868vw;
+        margin-right: 1.565vw;
+      }
+      @include respond-max($xs){
+        padding: 0 1.867vw;
+        width: 9.600vw;
+        height: 5.867vw;
+        margin-right: 3.200vw;
+        border-radius: 10.667vw;
       }
     }
   }

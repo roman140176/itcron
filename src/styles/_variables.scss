@@ -5,6 +5,7 @@ $gropled : 'Gropled', sans-serif;
 // Colors
 $bodyColor:#FFFFFF;
 $dark:#1F2020;
+$black:#000000;
 $green:#7BB899;
 $lightgray:#F2F2F2;
 $new:#31768F;
@@ -13,10 +14,7 @@ $contract:#763A26;
 
 
 // Breakpoints
-$mdl: 1200px;
-$md: 1199px;
-$sml: 960px;
-$sm: 959px;
-$xsl: 640px;
-$xs: 639px;
-$xxs: 479px;
+$lg:1440px;
+$md:991px;
+$tablet:767px;
+$xs:480px;

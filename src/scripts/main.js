@@ -11,6 +11,8 @@ import { fetchProducts } from './services/api.js';
 import { renderProducts } from './render/renderProducts.js';
 import { initCartPopup, addToCart, initClearCartButton } from './cart/cart.js';
 import { updateCartBadge } from './cart/updateTotals.js';
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
 
 new Swiper('.swiper', {
   loop: true,
@@ -37,8 +39,10 @@ window.addEventListener('load', () => {
 
   // products
 const container = document.querySelector('.catalog__content');
+const aside = document.querySelector('.catalog__filters');
 const form = document.getElementById('filters');
 const sortOptions = document.querySelectorAll('.sort-option');
+const menu = document.querySelector('.header__menu');
 let currentSort = 'desc_price';
 
 const loader = document.querySelector('.loader');
@@ -124,28 +128,95 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartBadge();
   initClearCartButton();
 
-  document.addEventListener('click', async (e) => {
-    if (e.target.classList.contains('product-card__btn')) {
-      const id = e.target.dataset.id;
 
+  document.addEventListener('click', async (e) => {
+    const target = e.target;
+
+    // Добавление товара в корзину
+    if (target.classList.contains('product-card__btn')) {
+      const id = target.dataset.id;
       try {
         const res = await fetch(`${API_URL}/${id}`);
-
-        if (!res.ok) {
-          throw new Error(`Ошибка запроса: ${res.status} ${res.statusText}`);
-        }
+        if (!res.ok) throw new Error(`Ошибка запроса: ${res.status} ${res.statusText}`);
 
         const product = await res.json();
-
-        if (!product || !product.id) {
-          throw new Error('Некорректные данные товара');
-        }
+        if (!product?.id) throw new Error('Некорректные данные товара');
 
         addToCart(product);
+
+        Toastify({
+          text: "Товар добавлен в корзину",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#4CAF50",
+        }).showToast();
+
       } catch (err) {
-        console.error('Не удалось добавить товар в корзину:', err);
-        alert('Произошла ошибка при добавлении товара. Попробуйте позже.');
+        console.error('Ошибка добавления товара:', err);
+        Toastify({
+          text: "Ошибка при добавлении товара",
+          duration: 4000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#e74c3c",
+        }).showToast();
       }
+      return;
+    }
+
+    // Открытие фильтров
+    if (target.closest('.catalog__content-filter')) {
+      aside.classList.toggle('active');
+      document.body.classList.toggle('overflow');
+      return;
+    }
+
+    // Закрытие фильтров
+    if (target.closest('.catalog__filters-overlay') || target.closest('.catalog__filters-close')) {
+      aside.classList.remove('active');
+      document.body.classList.remove('overflow');
+      return;
+    }
+
+    // Открытие/закрытие бургер-меню
+    if (target.closest('.header__burger')) {
+      const burger = target.closest('.header__burger');
+      burger.classList.toggle('active');
+      menu.classList.toggle('active');
     }
   });
+
 });
+
+let startY = 0;
+let isSwiping = false;
+
+const filters = document.querySelector('.catalog__filters');
+
+filters.addEventListener('touchstart', (e) => {
+  if (filters.classList.contains('active')) {
+    startY = e.touches[0].clientY;
+    isSwiping = true;
+  }
+});
+
+filters.addEventListener('touchmove', (e) => {
+  if (!isSwiping) return;
+
+  const deltaY = e.touches[0].clientY - startY;
+
+  // Свайп вниз больше 80px — закрываем
+  if (deltaY > 80) {
+    filters.classList.remove('active');
+    document.body.classList.remove('overflow'); // если было отключено скролл
+    isSwiping = false;
+  }
+});
+
+filters.addEventListener('touchend', () => {
+  isSwiping = false;
+});
+

@@ -42,7 +42,7 @@ export function renderCart() {
         </div>
         <div class="cart-item__controls">
           <button class="cart-item__decrease" data-id="${item.id}">-</button>
-          <input type="number" id="qty-${item.quantity}" name="qty" min="1" class="cart-item__qty cart-qty" data-id="${item.id}" value="${item.quantity}">
+          <input type="number" id="qty-${item.id}" name="qty" min="1" class="cart-item__qty cart-qty" data-id="${item.id}" value="${item.quantity}">
           <button class="cart-item__increase" data-id="${item.id}">+</button>
           <button class="${item.deleted ? 'cart-restore' : 'cart-remove'}" data-id="${item.id}" area-label="${item.deleted ? 'восстановить' : 'удалить'}">            
           </button>

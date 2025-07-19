@@ -33,7 +33,7 @@ export const fetchProducts = async (filters, loader) => {
     return data;
   } catch (err) {
     console.error('Ошибка при загрузке товаров:', err);
-    alert('Не удалось загрузить товары. Попробуйте позже.');
+    // alert('Не удалось загрузить товары. Попробуйте позже.');
     return [];
   } finally {
     hideLoader(loader);

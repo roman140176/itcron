@@ -1,3 +1,18 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+.footer
+{
+  height: 312px;
+  background-color: $black;  
+  @include respond-max($md){
+    height: 21.483vw;
+  }
+  @include respond-max($tablet){
+    height: 28.483vw;
+  }
+  @include respond-max($xs){
+    height: 54.400vw;
+  }
+ 
+}

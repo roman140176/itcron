@@ -4,7 +4,10 @@
 .hero{
   position: relative;
   color: $bodyColor; 
-  margin-bottom: 72px;
+  @include respond-max($xs){
+    display: none;
+  }
+  
   &__info{
     position: absolute;
     top: 50%;
@@ -17,19 +20,47 @@
     line-height: 88%;
     font-weight: normal;
     letter-spacing: -0.02em;
+    @include respond-max($tablet){
+    font-size: 7.040vw;
+    }
   }
   &__text{
     font-weight: 500;
     letter-spacing: 0.02em;
     line-height: 130%;
+    white-space: nowrap;
   }
   // cascade
   .swiper-button-prev,
   .swiper-button-next{
     color: $bodyColor;
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+    @include respond-max($md){
+      display: none;    
+    }
+  }
+  .swiper-button-prev{
+    left: 48px;
+  }
+  .swiper-button-next{
+    right: 48px;
   }
   img{
     display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  &__slide.swiper-slide{
+    @include respond-max($tablet){
+      height: 52.151vw;
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
     .swiper-pagination-fraction,
     .swiper-pagination-custom,
@@ -45,6 +76,11 @@
       width: fit-content;
       left: 50%;
       transform: translateX(-50%);
+      @include respond-max($tablet){
+        padding: 1.695vw 3.129vw;
+        border-radius: 50vw;
+        gap: 1.043vw;
+      }
       &>.swiper-pagination-bullet{
         margin: 0;
         width: 6px;
@@ -52,6 +88,18 @@
         cursor: pointer;
         &.swiper-pagination-bullet-active{
           background-color: $bodyColor;
+        }
+        @include respond-max($lg){
+        width: 0.417vw;
+        height: 0.417vw;
+        }
+        @include respond-max($md){
+        width: 0.605vw;
+        height: 0.605vw;
+        }
+        @include respond-max($tablet){
+        width: 0.782vw;
+        height: 0.782vw;
         }
       }
   }

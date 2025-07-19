@@ -1,7 +1,167 @@
 @use './variables' as *;
 @use './mixins' as *;
 
+// helpers
+.overflow{
+  overflow: hidden;
+}
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: flex !important;
+  ;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  z-index: 1001;
+}
+
+.loader.hidden {
+  display: none;
+}
+
+#preloader {
+  background-color: rgba(255, 255, 255, 0.99);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100px;
+    height: 100px;
+    @include respond-max($lg){
+      width: 6.944vw;
+      height: 6.944vw;
+    }
+    @include respond-max($md){
+      width: 9.722vw;
+      height: 9.722vw;
+    }
+    @include respond-max($tablet){
+      width: 13.333vw;
+      height: 13.333vw;    
+    }
+    @include respond-max($xs){
+      width: 19.733vw;
+      height: 19.733vw;
+    }
+  }
+}
+
+.main-title.container{
+  display: none;
+  @include respond-max($xs){
+    margin-top: 19.733vw;
+    margin-bottom: 12.800vw;
+    display: block;  
+    color: $black;
+    font-size: 9.600vw;
+  }
+}
+
+// breadcrumbs
+.breadcrumbs{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);  
+  z-index: 2;
+  
+  &__menu{
+    padding-top: 32px;
+    display: flex;
+    color: rgba($bodyColor,.3);
+    text-transform: uppercase;
+    font-size: 10px;
+    gap: 19px;
+    line-height: 1;
+    @include respond-max($lg){
+      padding-top: 2.222vw;
+      gap: 1.319vw;    
+      font-size: 0.694vw;
+    }
+    @include respond-max($md){
+      padding-top: 3.229vw;
+      gap: 1.917vw;    
+      font-size: 1.009vw;
+    }
+    @include respond-max($tablet){
+      padding-top: 4.172vw;
+      gap: 2.477vw;    
+      font-size: 1.304vw;
+    }
+    @include respond-max($xs){
+      padding-top: 4.267vw;
+      gap: 5.067vw;    
+      font-size: 2.667vw;
+      color: $black;
+      opacity: 0.3;
+    }
+    &-item:not(:last-child){
+      position: relative;
+      &::after{
+        content: '';        
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background-color: rgba($bodyColor, .3);
+        right: -11px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        @include respond-max($lg){
+          width: 0.208vw;
+          height: 0.208vw;    
+          right: -0.764vw;
+        }
+        @include respond-max($md){
+          width: 0.303vw;
+          height: 0.303vw;    
+          right: -1.110vw;
+        }
+        @include respond-max($tablet){
+          width: 0.391vw;
+          height: 0.391vw;    
+          right: -1.434vw;
+        }
+      }
+    }    
+  }
+}
+
+
+// sort
 .sort{
   &-wrapper{
     position: relative;
@@ -16,6 +176,15 @@
     z-index: 1002;
     white-space: nowrap;
     min-width: 280px;
+    @include respond-max($lg){
+      min-width: 18.333vw;    
+    }
+    @include respond-max($md){
+      min-width: 28.254vw;    
+    }
+    @include respond-max($xs){
+      min-width: 74.667vw;    
+    }
     &.hidden{
       display: none;
     }
@@ -29,6 +198,21 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
+    @include respond-max($lg){
+      padding: 1.111vw 1.667vw;
+      font-size: 0.833vw;    
+    }
+    @include respond-max($md){
+      padding: 1.615vw 2.422vw;
+      font-size: 1.211vw;    
+    }
+    @include respond-max($tablet){      
+      font-size: 1.565vw;    
+    }
+    @include respond-max($xs){    
+      padding: 4.267vw 6.400vw;  
+      font-size: 3.200vw;    
+    }
     &.active{
       background: $green;
     }
@@ -54,48 +238,65 @@
       background-size: 100% 100%;
       right: 0;
       margin-left: 5px;
+      @include respond-max($lg){
+        width: 0.486vw;
+        height: 0.347vw;      
+        margin-left: 0.347vw;
+      }
+      @include respond-max($md){
+        width: 0.706vw;     
+        height: 0.5vw;      
+        margin-left: 0.5vw;
+      }
+      @include respond-max($tablet){
+        width: 0.913vw;     
+        height: 0.652vw;
+        margin-left: 0.652vw;
+      }
+      @include respond-max($xs){
+        width: 1.867vw;     
+        height: 1.333vw;
+        margin-left: 1.333vw;
+      }
     }
+
+
+    @include respond-max($lg){
+      font-size: 0.833vw;    
+    }
+    @include respond-max($md){
+        font-size: 1.211vw;
+      }
+    @include respond-max($tablet){
+        font-size: 1.565vw;
+      }
+    @include respond-max($xs){
+        font-size: 3.200vw;
+      }
   }
 }
 
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
-
-.overlay.hidden {
-  display: none;
-}
-
-
-.hidden{
-  display: none!important;
-}
-.visible{
-  display: flex!important;;
-}
-
-.loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  background: white;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  z-index: 1001;
-}
-
-.loader.hidden {
-  display: none;
-}
 //product-card
 .product-card{
   position: relative;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba($black,.1);
+  @include respond-max($lg){
+    padding-bottom: 1.111vw;
+  }
+  @include respond-max($md){
+    padding-bottom: 1.615vw;
+  }
+  @include respond-max($tablet){
+    padding-bottom: 2.086vw;
+  }
+  @include respond-max($xs){
+    padding-bottom: 9.067vw;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
   &:hover{
     .product-card__btn{
       opacity: 1;
@@ -106,10 +307,28 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    margin: 0;
+    @include respond-max($lg){
+      gap: 0.556vw;    
+    }
+    &-new{
+      font-weight: 600;      
+    }
+    &-old{
+      text-decoration: line-through;
+      font-weight: 300;      
+      opacity: 0.6;
+    }
   }
   &__image{
     width: 100%;
     height: 278px;
+    @include respond-max($md){
+      height: 28.052vw;    
+    }
+    @include respond-max($xs){
+      height: 41.600vw;    
+    }
     img{
       object-fit: cover;
       width: 100%;
@@ -124,18 +343,49 @@
     font-weight: 300;
     margin-top: 16px;
     margin-bottom: 24px;
+    @include respond-max($lg){
+      font-size: 1.111vw;
+      margin-top: 1.111vw;
+      margin-bottom: 1.667vw;
+    }
+    @include respond-max($md){
+      font-size: 1.615vw;    
+      margin-bottom: 2.422vw;
+    }
+    @include respond-max($tablet){
+      font-size: 2.086vw;    
+      margin-top: 2.086vw;
+      margin-bottom: 5.333vw;
+    }
+    @include respond-max($xs){
+      font-size: 4.267vw;    
+      margin-top: 4.267vw;
+      margin-bottom: 3.129vw;
+    }
   }
   &__features{
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0;
+    left: 0;
     display: flex;
     gap: 2px;
     font-size: 11px;
+    @include respond-max($lg){
+      font-size: 0.764vw;    
+    }
+    @include respond-max($md){
+      font-size: 1.111vw;    
+    }
+    @include respond-max($tablet){
+      font-size: 1.565vw;    
+    }
+    @include respond-max($xs){
+      font-size: 2.667vw;    
+    }
   }
   &__feature{
     padding: 4px 8px;
-    border-radius: 8px;
+    border-radius: 6px;
     color: $bodyColor;
     background-color: $green;
     &--new{
@@ -146,6 +396,14 @@
     }
     &--contract{
       background-color: $contract;
+    }
+    @include respond-max($tablet){
+      padding: 0.522vw 1.043vw;
+      border-radius: 0.782vw;
+    }
+    @include respond-max($xs){
+      padding: 0.667vw 2.133vw;
+      border-radius: 1vw;
     }
   }
   &__btn{
@@ -161,6 +419,19 @@
     margin-left: auto;
     opacity: 0;
     transition: opacity .3s ease-in-out;
+    @include respond-max($md){
+      width: 8.073vw;
+      height: 3.229vw;
+      opacity: 1;
+      background-size: 1.825vw 1.413vw;
+      background-color: $lightgray;
+    }
+    @include respond-max($xs){
+      width: 10.667vw;
+      height: 6.400vw;
+      background-size: 3.200vw 3.200vw;
+      border-radius: 1.600vw;
+    }
   }
 }
 
@@ -172,17 +443,32 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 1002;
   background-color: $bodyColor;
   overflow-y: auto;
   width: 600px;
+  @include respond-max($lg){
+    padding: 2.569vw 2.778vw 2.778vw 2.778vw;
+    width: 41.667vw;  
+  }
+  @include respond-max($md){
+    padding:3.229vw;
+    width: 60.545vw;  
+  }
+  @include respond-max($tablet){
+    padding:3.229vw;
+    width: 100%;  
+  }
+  @include respond-max($xs){
+    padding:6.400vw;
+  }
   &__overlay{
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 99;
     display: none;
   }
@@ -194,11 +480,35 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 80px;
+    @include respond-max($lg){
+      margin-bottom: 5.556vw;      
+    }
+    @include respond-max($md){
+      margin-bottom: 6.667vw;      
+    }
+    @include respond-max($tablet){
+      margin-bottom: 7.778vw;      
+    }
+    @include respond-max($xs){
+      margin-bottom: 12.800vw;      
+    }
     h2{
       font-size: 30px;
       line-height: 88%;
       font-weight: 500;
       letter-spacing: -0.04em;
+      @include respond-max($lg){
+        font-size: 2.083vw;      
+      }
+      @include respond-max($md){
+        font-size: 3.027vw;      
+      }
+      @include respond-max($tablet){
+        font-size: 3.911vw;      
+      }
+      @include respond-max($xs){
+        font-size: 8.000vw;      
+      }
     }
   }
   &__close{
@@ -210,6 +520,26 @@
     background-size: 14px 14px;
     cursor: pointer;  
     font-size: 0;
+    @include respond-max($lg){
+      width: 3.333vw;
+      height: 3.333vw;    
+      background-size: 0.972vw 0.972vw;
+    }
+    @include respond-max($md){
+      width: 4.844vw;
+      height: 4.844vw;    
+      background-size: 1.413vw 1.413vw;
+    }
+    @include respond-max($tablet){
+      width: 6.258vw;
+      height: 6.258vw;    
+      background-size: 1.825vw 1.825vw;
+    }
+    @include respond-max($xs){
+      width: 8.533vw;
+      height: 8.533vw;    
+      background-size: 3.200vw 3.200vw;
+    }
   }
   &__panel{
     display: flex;
@@ -219,6 +549,21 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 14px;
     line-height: 112%;
+    @include respond-max($lg){
+      font-size: 0.833vw;    
+    }
+    @include respond-max($md){
+      font-size: 1.413vw;   
+      padding-bottom: 1.009vw; 
+    }
+    @include respond-max($tablet){
+      font-size: 1.825vw;   
+      padding-bottom: 1.304vw; 
+    }
+    @include respond-max($xs){
+      font-size: 3.200vw;   
+      padding-bottom: 2.667vw; 
+    }
   }
   &__clear{
     background: none;
@@ -232,6 +577,11 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-top: auto;
+    @include respond-max($xs){
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 3.2vw;
+    }
   }
   &__summary{
     display: flex;
@@ -240,6 +590,22 @@
       margin-top: 6px;
       font-size: 30px;
       font-weight: 500;
+      @include respond-max($lg){
+        margin-top: 0.417vw;
+        font-size: 2.083vw;      
+      }
+      @include respond-max($md){
+        margin-top: 0.605vw;
+        font-size: 3.027vw;      
+      }
+      @include respond-max($tablet){
+        margin-top: 0.782vw;
+        font-size: 3.911vw;      
+      }
+      @include respond-max($xs){
+        margin-top: 1.600vw;
+        font-size: 8.000vw;      
+      }
     }
   }
   &__order{
@@ -255,6 +621,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include respond-max($lg){
+      width: 16.667vw;
+      height: 3.333vw;
+      font-size: 0.833vw;    
+    }
+    @include respond-max($md){
+      width: 24.218vw;
+      height: 5.651vw;
+      font-size: 1.211vw;    
+    }
+    @include respond-max($tablet){
+      width: 31.291vw;
+      height: 7.301vw;
+      font-size: 1.565vw;    
+    }
+    @include respond-max($xs){
+      width: 100%;
+      height: 14.933vw;
+      font-size: 3.200vw;    
+    }
   }
 }
 
@@ -263,13 +649,51 @@
   padding: 12px 0;
   display: flex;
   align-items: center;
+  &--deleted{
+    .cart-item__image-box,.cart-item__info-box,.cart-item__decrease,input,.cart-item__increase{
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  }
   &:not(:last-child){
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  @include respond-max($lg){
+    padding: 0.833vw 0;  
+  }
+  @include respond-max($md){
+    padding: 1.211vw 0;  
+  }
+  @include respond-max($tablet){
+    padding: 1.565vw 0;  
+  }
+  @include respond-max($xs){
+    padding: 3.200vw 0;  
   }
   &__image-box{
     width: 96px;
     height: 96px;
     margin-right: 8px;
+    @include respond-max($lg){
+      width: 6.667vw;
+      height: 6.667vw;    
+      margin-right: 0.556vw;
+    }
+    @include respond-max($md){
+      width: 9.687vw;
+      height: 9.687vw;    
+      margin-right: 0.807vw;
+    }
+    @include respond-max($tablet){
+      width: 12.516vw;
+      height: 12.516vw;    
+      margin-right: 1.043vw;
+    }
+    @include respond-max($xs){
+      width: 17.067vw;
+      height: 17.067vw;    
+      margin-right: 2.133vw;
+    }
   }
   &__image{
     width: 100%;
@@ -283,12 +707,48 @@
     flex-grow: 1;
     &-box{
       max-width: 165px;
+      @include respond-max($lg){
+        max-width: 11.458vw;      
+      }
+      @include respond-max($md){
+        max-width: 16.650vw;      
+      }
+      @include respond-max($tablet){
+        max-width: 21.512vw;      
+      }
+      @include respond-max($xs){
+        max-width: 37.333vw;      
+      }
     }
     h4{
       font-size: 16px;
       font-weight: 300;
       margin-bottom: 16px;
       margin-top: 0;
+      @include respond-max($lg){
+        font-size: 1.111vw;      
+      }
+      @include respond-max($md){
+        font-size: 1.615vw;      
+      }
+      @include respond-max($tablet){
+        font-size: 2.086vw;      
+      }
+      @include respond-max($xs){
+        font-size: 3.200vw;      
+      }
+    }
+  }
+  &__price{
+    font-weight: 600;
+    @include respond-max($xs){
+      font-size: 3.200vw;
+    }
+    &-old{
+      font-weight: 300; 
+      text-decoration: line-through;
+      opacity: 0.6;
+      font-size: 3.200vw;
     }
   }
   &__controls{
@@ -297,6 +757,7 @@
     align-items: center;
   }
   .cart-remove{
+    padding: 0;
     width: 24px;
     height: 24px;
     margin-left: 37px;
@@ -308,6 +769,30 @@
     background-repeat: no-repeat;
     cursor: pointer;
     opacity: 0.2;
+    @include respond-max($lg){
+      width: 1.667vw;
+      height: 1.667vw;
+      margin-left: 2.569vw;
+      background-size: 0.972vw 0.972vw;
+    }
+    @include respond-max($md){
+      width: 2.422vw;
+      height: 2.422vw;
+      margin-left: 3.734vw;
+      background-size: 1.413vw 1.413vw;
+    }
+    @include respond-max($tablet){
+      width: 3.129vw;
+      height: 3.129vw;
+      margin-left: 4.694vw;
+      background-size: 1.825vw 1.825vw;
+    }
+    @include respond-max($xs){
+      width: 6.400vw;
+      height: 6.400vw;
+      margin-left: 4.694vw;
+      background-size: 3.733vw 3.733vw;
+    }
   }
   .cart-restore{
     @extend .cart-remove;
@@ -334,22 +819,60 @@
         &:focus {
           outline: none;
         }
+      @include respond-max($lg){
+        width: 3.333vw;
+      }
+      @include respond-max($md){
+        width: 4.844vw;
+      }
+      @include respond-max($tablet){
+        width: 6.258vw;
+      }
   }
   &__decrease,&__increase{
     border: none;
     width: 40px;
     height: 24px;
     border-radius: 4px;
+    @include respond-max($lg){
+      width: 2.778vw;
+      height: 1.667vw;    
+      border-radius: 0.278vw;
+    }
+    @include respond-max($md){
+      width: 4.036vw;    
+      height: 2.422vw;
+    }
+    @include respond-max($tablet){
+      width: 5.215vw;    
+      height: 3.129vw;
+    }
+    @include respond-max($xs){
+      width: 6.400vw;    
+      height: 6.400vw;
+    }
   }
   &__decrease{
     font-size: 0;
-    background: $lightgray url(/assets/images/minus.svg) no-repeat center center;
+    background: $lightgray url("/assets/images/minus.svg") no-repeat center center;
     background-size: 14px 14px;
     cursor: pointer;
+    @include respond-max($lg){
+      background-size: 0.972vw 0.972vw;
+    }
+    @include respond-max($md){
+      background-size: 1.413vw 1.413vw;
+    }
+    @include respond-max($tablet){
+      background-size: 1.825vw 1.413vw;
+    }
+    @include respond-max($xs){
+      background-size: 3.200vw 3.200vw;
+    }
   }
   &__increase{
     @extend .cart-item__decrease;
-    background: $lightgray url(/assets/images/inc.svg) no-repeat center center;
+    background: $lightgray url("/assets/images/inc.svg") no-repeat center center;
   }
   
 }

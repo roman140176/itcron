@@ -7,6 +7,12 @@
     { text: 'Найти магазин', href: '#' }
   ]
 - 
+  breadcrumbs = [
+    { text: 'Главная', href: '#' },
+    { text: 'Продукты', href: '#' },
+    { text: 'Краски', href: '#' }    
+  ]
+- 
   icons = [
     { icon: 'search'},
     { icon: 'user'},
@@ -15,10 +21,10 @@
 
 header.header
   .container.header__container
+    .header__burger #[span]
     a.header__logo(href="/" aria-label="Главная")
       +icon('logo')
     +menu(items, 'header')
-    .header__burger
       span
     .header__contact
       a.header__phone(href="tel:+7 (495) 221-77-69") +7 (495) 221-77-69
@@ -28,3 +34,6 @@ header.header
         span(class=`header__icon header__icon--${item.icon}`)
           +icon(item.icon)
       span#cart.header__icon.header__icon--cart 0
+  .container.breadcrumbs
+    +menu(breadcrumbs, 'breadcrumbs')
+h1.main-title.container Краски    
